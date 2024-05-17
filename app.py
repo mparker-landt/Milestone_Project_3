@@ -92,8 +92,12 @@ def index():
     cur.close() 
     conn.close() 
   
-    return render_template('index.html', data=data) 
+    return render_template('base.html', data=data) 
   
+@app.route("/portfolio")
+def portfolio():
+    return render_template("portfolio.html")
+
   
 @app.route('/create', methods=['POST']) 
 def create(): 
