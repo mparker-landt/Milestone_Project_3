@@ -18,7 +18,7 @@ cur = conn.cursor()
 cur.execute( '''CREATE TABLE IF NOT EXISTS products (id serial PRIMARY KEY, name varchar(100), price float);''') 
   
 # Insert some data into the table 
-cur.execute( '''INSERT INTO products (name, price) VALUES ('Apple', 1.99), ('Orange', 0.99), ('Banana', 0.59);''') 
+# cur.execute( '''INSERT INTO products (name, price) VALUES ('Apple', 1.99), ('Orange', 0.99), ('Banana', 0.59);''') 
   
 # commit the changes 
 conn.commit() 
@@ -109,10 +109,7 @@ def create():
     price = request.form['price'] 
   
     # Insert the data into the table 
-    cur.execute( 
-        '''INSERT INTO products \ 
-        (name, price) VALUES (%s, %s)''', 
-        (name, price)) 
+    cur.execute( '''INSERT INTO products (name, price) VALUES (%s, %s)''', (name, price)) 
   
     # commit the changes 
     conn.commit() 
@@ -139,9 +136,7 @@ def update():
     id = request.form['id'] 
   
     # Update the data in the table 
-    cur.execute( 
-        '''UPDATE products SET name=%s,\ 
-        price=%s WHERE id=%s''', (name, price, id)) 
+    cur.execute( '''UPDATE products SET name=%s,price=%s WHERE id=%s''', (name, price, id)) 
   
     # commit the changes 
     conn.commit() 
