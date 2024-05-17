@@ -1,39 +1,103 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Volo Requirements System
 
-Welcome,
+![Responsive screenshot](assets/images/readme/ms2-amiresponsive.png)
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+View Repository in GitHub Pages:\
+https://github.com/mparker-landt/Milestone_Project_3
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+View Website Link:\
+https://mparker-landt.github.io/Milestone_Project_3/
 
-## Codeanywhere Reminders
+Author: Marcus Parker\
+Github: [mparker-landt](https://github.com/mparker-landt)
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+## Table of Contents
++ [UX](#ux "UX")
+  + [User Demographic](#user-demographic "User Demographic")
+  + [User Stories](#user-stories "User Stories")
+    + [First time User Stories](#first-time-user-stories "First time User Stories")
+    + [Returning User Stories](#returning-user-stories "Returning User Stories")
+  + [Design](#design "Design")
+    + [Wireframes](#wireframes "Wireframes")
+    + [Flow Charts](#flow-charts "Flow Charts")
+    + [Colour Scheme](#colour-scheme "Colour Scheme")
+    + [Typography](#typography "Typography")
+    + [Images](#images "Images")
++ [Features](#features "Features")
+  + [Base Game Features](#base-game-features "Base Game Features")
+  + [Advanced Game Features](#advanced-game-features "Advanced Game Features")
+  + [Design Features](#design-features "Design Features")
+  + [Future Features](#future-features "Future Features")
++ [Resources](#resources "Resources")
+  + [Technologies](#technologies "Technologies")
+  + [External Resources](#external-resources "External Resources")
++ [Testing](#testing "Testing")
+  + [Performance Testing](#performance-testing "Performance Testing")
+  + [HTML Validator Testing](#html-validator-testing "HTML Validator Testing")
+  + [CSS Validator Testing](#css-validator-testing "CSS Validator Testing")
+  + [JS Testing](#js-testing "JS Testing")
++ [Known Bugs](#known-bugs "Known Bugs")
++ [Development & Deployment](#development--deployment "Development & Deployment")
+  + [Development](#development "Development")
+  + [Deployment](#deployment "Deployment")
++ [Credits and Acknowledgements](#credits-and-acknowledgements "Credits and Acknowledgements")
 
-`python3 -m http.server`
+## UX
+### User Demographic
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+### User Stories
+#### First time User Stories:
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+#### Returning User Stories:
 
-`http_server`
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### Design
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+#### Wireframes
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+#### Flow Charts
 
-To log into the Heroku toolbelt CLI:
+#### Colour Scheme
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+#### Typography
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+#### Images
 
----
 
-Happy coding!
+## Features
+### Base Game Features
+
+### Advanced Game Features
+
+### Design Features
+
+### Future Features
+
+
+## Resources
+### Technologies
+
+### External Resources
+
+
+## Testing
+
+### Performance Testing
+
+### HTML Validator Testing
+
+### CSS Validator Testing
+
+### JS Testing
+
+
+## Known Bugs
+
+
+## Development & Deployment
+### Development
+
+### Deployment
+
+
+## Credits and Acknowledgements
