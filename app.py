@@ -92,11 +92,27 @@ def index():
     cur.close() 
     conn.close() 
   
-    return render_template('base.html', data=data) 
+    return render_template('index.html', data=data) 
   
-@app.route("/portfolio")
-def portfolio():
-    return render_template("portfolio.html")
+@app.route("/primary_reqs")
+def primary_reqs():
+    return render_template("primary_reqs.html")
+
+@app.route("/secondary_reqs")
+def secondary_reqs():
+    return render_template("secondary_reqs.html")
+
+@app.route("/product_reqs")
+def product_reqs():
+    return render_template("product_reqs.html")
+
+@app.route("/tests")
+def tests():
+    return render_template("tests.html")
+
+@app.route("/test_reports")
+def test_reports():
+    return render_template("test_reports.html")
 
   
 @app.route('/create', methods=['POST']) 
