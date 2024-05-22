@@ -1,6 +1,10 @@
+* {
+    --req_blue: #4d72df;
+}
+
 #dashboard-grid {
     display: grid;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     border-radius: 10px;
 
     /* height: 500px; */
@@ -10,17 +14,19 @@
 }
 
 .dashboard-item {
-    border: 1px solid grey;
+    border: 1px solid var(--req_blue);
     border-radius: 10px;
 
     height: 200px;
     width: 150px;
+
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .dashboard-item:hover {
-    border: 3px solid grey;
+    border: 3px solid var(--req_blue);
 }
-
+  
 table, th, td {
     border: 1px solid;
     text-align: center;
@@ -28,7 +34,7 @@ table, th, td {
     padding: 2px;
 }
 
-tr:hover {
+td:hover {
     background-color: lightcyan;
 }
 
