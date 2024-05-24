@@ -5,79 +5,106 @@
 {% endblock %}
 
 {% block content %}
-    <table class="page-table">
-        <tr>
-            <th>ID</th>
-            <th>Description</th>
-            <th>
-                <label for="author"></label>
-                <select name="author" id="author">
-                    <option>Author</option>
-                    <option>Joe Bloggs</option>
-                    <option>Benjamin Button</option>
-                    <option>Opel Stone</option>
-                    <option>Freddie Flock</option>
-                    <option>Sally Sparrow</option>
+    <div class="flex-page">
+        <div class="flex-title">
+            <label for="project"></label>
+                <select name="project" id="project">
+                    <option>Project</option>
+                    <option>D2311</option>
+                    <option>D2312</option>
+                    <option>D2313</option>
+                    <option>D2314</option>
+                    <option>D2315</option>
                 </select>
-            </th>
-            <th>
-                <label for="acceptance-criteria"></label>
-                <select name="acceptance-criteria" id="acceptance-criteria">
-                    <option>Acceptance Criteria</option>
-                    <option>Inhouse Testing</option>
-                    <option>Specialist Opinion</option>
-                    <option>Specialist Testing</option>
+
+            <label for="version"></label>
+                <select name="version" id="version">
+                    <option>Version</option>
+                    <option>V1 - 13/03/2022</option>
+                    <option>V2 - 20/06/2022</option>
+                    <option>V3 - 06/01/2023</option>
+                    <option>V4 - 17/07/2023</option>
+                    <option>V5 - 26/04/2024</option>
                 </select>
-            </th>
-            <th>
-                <label for="progress"></label>
-                <select name="progress" id="progress">
-                    <option>Progress</option>
-                    <option>Backlog</option>
-                    <option>In Progress</option>
-                    <option>Completed</option>
-                    <option>Deferred</option>
-                </select>
-            </th>
-            <th>
-                <label for="priority"></label>
-                <select name="priority" id="priority">
-                    <option>Priority</option>
-                    <option>Very Low</option>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                    <option>Critical</option>
-                </select>
-            </th>
-            <th>Deadline</th>
-        </tr>
-        <tr>
-            <td>S001</td>
-            <td>First secondary Requirement</td>
-            <td>Benjamin Button</td>
-            <td>Inhouse Tests</td>
-            <td>Backlog</td>
-            <td>Medium</td>
-            <td>13/08/2024</td>
-        </tr>
-        <tr>
-            <td>S002</td>
-            <td>Secondary secondary Requirement</td>
-            <td>joe Bloggs</td>
-            <td>Specialist Opinion</td>
-            <td>In Progress</td>
-            <td>Critical</td>
-            <td>09/06/2024</td>
-        </tr>
-        <tr>
-            <td>S003</td>
-            <td>.....</td>
-            <td>.....</td>
-            <td>.....</td>
-            <td>.....</td>
-            <td>.....</td>
-            <td>.....</td>
-        </tr>
-    </table>
+        </div>
+        <div class="flex-body">
+            <table class="page-table">
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>
+                        <label for="author"></label>
+                        <select name="author" id="author">
+                            <option>Author</option>
+                            <option>Joe Bloggs</option>
+                            <option>Benjamin Button</option>
+                            <option>Opel Stone</option>
+                            <option>Freddie Flock</option>
+                            <option>Sally Sparrow</option>
+                        </select>
+                    </th>
+                    <th>
+                        <label for="acceptance-criteria"></label>
+                        <select name="acceptance-criteria" id="acceptance-criteria">
+                            <option>Acceptance Criteria</option>
+                            <option>Inhouse Testing</option>
+                            <option>Specialist Opinion</option>
+                            <option>Specialist Testing</option>
+                        </select>
+                    </th>
+                    <th>
+                        <label for="progress"></label>
+                        <select name="progress" id="progress">
+                            <option>Progress</option>
+                            <option>Backlog</option>
+                            <option>In Progress</option>
+                            <option>Completed</option>
+                            <option>Deferred</option>
+                        </select>
+                    </th>
+                    <th>
+                        <label for="priority"></label>
+                        <select name="priority" id="priority">
+                            <option>Priority</option>
+                            <option>Very Low</option>
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                            <option>Critical</option>
+                        </select>
+                    </th>
+                    <th>Deadline</th>
+                </tr>
+                <tr>
+                    <td>S001</td>
+                    <td>First secondary Requirement</td>
+                    <td>Benjamin Button</td>
+                    <td>Inhouse Tests</td>
+                    <td>Backlog</td>
+                    <td>Medium</td>
+                    <td>13/08/2024</td>
+                </tr>
+                <tr>
+                    <td>S002</td>
+                    <td>Secondary secondary Requirement</td>
+                    <td>joe Bloggs</td>
+                    <td>Specialist Opinion</td>
+                    <td>In Progress</td>
+                    <td>Critical</td>
+                    <td>09/06/2024</td>
+                </tr>
+                <tr>
+                    <td>S003</td>
+                    <td>.....</td>
+                    <td>.....</td>
+                    <td>.....</td>
+                    <td>.....</td>
+                    <td>.....</td>
+                    <td>.....</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    
 {% endblock %}

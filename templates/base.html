@@ -119,10 +119,10 @@
             <div id="content-wrapper" class="d-flex flex-column">
 
                 <!-- Main Content -->
-                <div id="content">
+                <div id="content" class="overflow-mode">
 
                     <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow sticky-top">
 
                         <!-- Sidebar Toggle (Topbar) -->
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -161,12 +161,16 @@
                     <!-- End of Topbar -->
 
                     <!-- Begin Page Content -->
-                    <div class="container-fluid">
+                    <div class="page-container ">
 
-                        <div class="container">                        
+                        <div class="page-content">
                             {% block content %}
-                            {% endblock %}
+                            {% endblock %} 
                         </div>
+                        
+
+                        <!-- <div class="container">                     
+                        </div> -->
 
                     </div>
                     <!-- /.container-fluid -->
@@ -174,7 +178,7 @@
                 </div>
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
+                <footer class="sticky-footer bg-white sticky-bottom">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
                             <span>Copyright &copy; Your Website 2021</span>
