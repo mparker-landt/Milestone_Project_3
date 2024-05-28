@@ -9,20 +9,20 @@ app = Flask(__name__)
 # Connect to the database 
 conn = psycopg2.connect(database="flask_db", user="postgres", 
                         password="rootuser", host="localhost", port="5432") 
-  
+
 # create a cursor 
 cur = conn.cursor() 
-  
+
 # if you already have any table or not id doesnt matter this  
 # will create a products table for you. 
 cur.execute( '''CREATE TABLE IF NOT EXISTS products (id serial PRIMARY KEY, name varchar(100), price float);''') 
-  
+
 # Insert some data into the table 
 # cur.execute( '''INSERT INTO products (name, price) VALUES ('Apple', 1.99), ('Orange', 0.99), ('Banana', 0.59);''') 
-  
+
 # commit the changes 
 conn.commit() 
-  
+
 # close the cursor and connection 
 cur.close() 
 conn.close() 
@@ -93,7 +93,7 @@ def index():
     conn.close() 
   
     return render_template('index.html', data=data) 
-  
+
 @app.route("/primary_reqs")
 def primary_reqs():
     return render_template("primary_reqs.html")
@@ -114,7 +114,8 @@ def tests():
 def test_reports():
     return render_template("test_reports.html")
 
-  
+
+
 @app.route('/create', methods=['POST']) 
 def create(): 
     conn = psycopg2.connect(database="flask_db", 
@@ -139,8 +140,7 @@ def create():
     conn.close() 
   
     return redirect(url_for('index')) 
-  
-  
+
 @app.route('/update', methods=['POST']) 
 def update(): 
     conn = psycopg2.connect(database="flask_db", 
@@ -161,8 +161,7 @@ def update():
     # commit the changes 
     conn.commit() 
     return redirect(url_for('index')) 
-  
-  
+
 @app.route('/delete', methods=['POST']) 
 def delete(): 
     conn = psycopg2.connect(database="flask_db", user="postgres", 
@@ -184,8 +183,8 @@ def delete():
     conn.close() 
   
     return redirect(url_for('index')) 
-  
-  
+
+
 if __name__ == '__main__': 
     app.run(debug=True) 
 
