@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block content %}
+    <div id="dashboard-grid">
+        
+        <div class="card shadow dashboard-item border-bottom-primary" > <!-- data-toggle="modal" data-target="#projectModal" -->
+            <h3 class="card-header dashboard-item-header">Project ID</h3>
+            <p class="card-body dashboard-item-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        {% for project in projects %}
+            <div class="card shadow dashboard-item border-bottom-primary">
+                <h3 class="card-header dashboard-item-header"> {{project.title}} </h3>
+                <p class="card-body dashboard-item-body"> {{project.description}} </p>
+            </div>
+        {% endfor %}
+
+        <div id="AddGrid" class="card shadow dashboard-item dashboard-item-new border-bottom-primary" data-toggle="modal" data-target="#addProject">
+            <span><i class="fa fa-solid fa-plus"></i></span>
+            <h4>Add New Project</h4>
+        </div>
+    </div>
+
+    <!-- Basic Card Example -->
+    <!-- <div class="card shadow mb-4">
+        <div class="card-header card-head-mod py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="card-body">
+            The styling for this basic card example is created by using default Bootstrap
+            utility classes. By using utility classes, the style of the card component can be
+            easily modified with no need for any custom CSS!
+        </div>
+    </div> -->
+
+    <!-- Project Card Modal-->
+    <div class="modal fade modal-page" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-page" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Project Title</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Project Body Information
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
+                    <a class="btn btn-primary" href={{ url_for('project_reqs') }}>Go to Project Reqs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Card Modal-->
+    <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-page" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add project</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form method="POST" action="{{url_for('add_project')}}">
+                                    <label for="title">TITLE</label>
+                                    <input name="title" id="title" type="text" required>
+
+                                    <label for="description">DESCRIPTION</label>
+                                    <input name="description" id="description" type="text" required>
+
+                                    <button type="submit">ADD</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
+                    <!-- <a class="btn btn-primary" href={{ url_for('project_reqs') }}>ADD</a> -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<!-- {%if name %}
+{% else %}
+{% endif %} -->

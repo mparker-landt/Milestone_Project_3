@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Test Reports
+{% endblock %}
+
+{% block content %}
+
+    <div class="flex-page">
+        <div class="flex-title">
+            <!-- <label for="project"></label>
+            <select name="project" id="project">
+                <option>Project</option>
+                <option>D2311</option>
+                <option>D2312</option>
+                <option>D2313</option>
+                <option>D2314</option>
+                <option>D2315</option>
+            </select> -->
+            <div class="dropdown mb-4">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Project
+                </button>
+                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">D2311</a>
+                    <a class="dropdown-item" href="#">D2312</a>
+                    <a class="dropdown-item" href="#">D2313</a>
+                    <a class="dropdown-item" href="#">D2314</a>
+                    <a class="dropdown-item" href="#">D2315</a>
+                    {% for project in projects|sort(attribute="id") %}
+                        <a class="dropdown-item" href="#">{{project.title}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="flex-body">
+            <div class="report-grid">
+                <div class="card shadow dashboard-item dashboard-item-new border-bottom-primary" data-toggle="modal" data-target="#testModal">
+                    <h3>Test 1</h3>
+                </div>
+                {% for test_report in test_reports|sort(attribute="id") %}
+                    <div class="card shadow dashboard-item dashboard-item-new border-bottom-primary">
+                        <h3>{{test_report.id}}</h3>
+                    </div>
+                {% endfor %}
+
+                <div id="AddTest" class="card shadow dashboard-item dashboard-item-new border-bottom-primary ">
+                    <span><i class="fa fa-solid fa-plus"></i></span>
+                    <h4>Add Test Report</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Card Modal-->
+    <div class="modal fade modal-page" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-page" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Test Title</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                Test Body Information
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
+                    <!-- <a class="btn btn-primary" href={{ url_for('project_reqs') }}>Go to Project Reqs</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

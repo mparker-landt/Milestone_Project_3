@@ -1,0 +1,338 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Project Requirements
+{% endblock %}
+
+{% block content %}
+    <div class="flex-page">
+        <div class="flex-title">
+            <!-- <label for="project"></label>
+            <select name="project" id="project" class="dropdown mb-4">
+                <option>Project</option>
+                <option>D2311</option>
+                <option>D2312</option>
+                <option>D2313</option>
+                <option>D2314</option>
+                <option>D2315</option>
+            </select> -->
+            <div class="dropdown mb-4">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Project
+                </button>
+                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">D2311</a>
+                    <a class="dropdown-item" href="#">D2312</a>
+                    <a class="dropdown-item" href="#">D2313</a>
+                    <a class="dropdown-item" href="#">D2314</a>
+                    <a class="dropdown-item" href="#">D2315</a>
+                    {% for project in projects|sort(attribute="id") %}
+                        <a class="dropdown-item" href="#">{{project.title}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="flex-body">
+            <!-- <table id="req-table" class="page-table">
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>
+                        <label for="author"></label>
+                        <select name="author" id="author">
+                            <option>Author</option>
+                            <option>Joe Bloggs</option>
+                            <option>Benjamin Button</option>
+                            <option>Opel Stone</option>
+                            <option>Freddie Flock</option>
+                            <option>Sally Sparrow</option>
+                        </select>
+                    </th>
+                    <th>
+                        <label for="acceptance-criteria"></label>
+                        <select name="acceptance-criteria" id="acceptance-criteria">
+                            <option>Acceptance Criteria</option>
+                            <option>Inhouse Testing</option>
+                            <option>Specialist Opinion</option>
+                            <option>Specialist Testing</option>
+                        </select>
+                    </th>
+                    <th>
+                        <label for="progress"></label>
+                        <select name="progress" id="progress">
+                            <option>Progress</option>
+                            <option>Backlog</option>
+                            <option>In Progress</option>
+                            <option>Completed</option>
+                            <option>Deferred</option>
+                        </select>
+                    </th>
+                    <th>
+                        <label for="priority"></label>
+                        <select name="priority" id="priority">
+                            <option>Priority</option>
+                            <option>Very Low</option>
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                            <option>Critical</option>
+                        </select>
+                    </th>
+                    <th>Deadline</th>
+                </tr>
+                <tr>
+                    <td>S001</td>
+                    <td>First secondary Requirement</td>
+                    <td>Benjamin Button</td>
+                    <td>Inhouse Tests</td>
+                    <td>Backlog</td>
+                    <td>Medium</td>
+                    <td>13/08/2024</td>
+                </tr>
+                <tr>
+                    <td>S002</td>
+                    <td>Secondary secondary Requirement</td>
+                    <td>joe Bloggs</td>
+                    <td>Specialist Opinion</td>
+                    <td>In Progress</td>
+                    <td>Critical</td>
+                    <td>09/06/2024</td>
+                </tr>
+                <tr>
+                    <td class="AddTable"><i class="fa fa-solid fa-plus"></i></td>
+                    <td>.....</td>
+                    <td>.....</td>
+                    <td>.....</td>
+                    <td>.....</td>
+                    <td>.....</td>
+                    <td>.....</td>
+                </tr>
+            </table> -->
+
+            <!-- DataTales Example -->
+            <div class="card shadow page-table border-left-primary">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Primary Key</th>
+                                    <th>Description</th>
+                                    <th>Acceptance Rationale</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Primary Key</th>
+                                    <th>Description</th>
+                                    <th>Acceptance Rationale</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>P001</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>    
+                                </tr>
+                                <!-- <tr>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Secondary Key</th>
+                                                <th>Description</th>
+                                                <th>Need</th>
+                                                <th>Acceptance Criteria</th>
+                                                <th>Changed</th>
+                                                <th>Tested</th>
+                                                <th>Test Link</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>S001</td>
+                                                <td>First secondary requirement</td>
+                                                <td>Critical</td>
+                                                <td>Assessed by 2 medical professionals</td>
+                                                <td>Not changed</td>
+                                                <td>Yes</td>
+                                                <td>GOTO</td>
+                                            </tr>
+                                            <tr>
+                                                <td>S002</td>
+                                                <td>First secondary requirement</td>
+                                                <td>Critical</td>
+                                                <td>Assessed by 2 medical professionals</td>
+                                                <td>Not changed</td>
+                                                <td>Yes</td>
+                                                <td>GOTO</td>
+                                            </tr>
+                                            <tr>
+                                                <td>S003</td>
+                                                <td>First secondary requirement</td>
+                                                <td>Critical</td>
+                                                <td>Assessed by 2 medical professionals</td>
+                                                <td>Not changed</td>
+                                                <td>Yes</td>
+                                                <td>GOTO</td>
+                                            </tr>
+                                            <tr>
+                                                <td>S004</td>
+                                                <td>First secondary requirement</td>
+                                                <td>Critical</td>
+                                                <td>Assessed by 2 medical professionals</td>
+                                                <td>Not changed</td>
+                                                <td>Yes</td>
+                                                <td>GOTO</td>
+                                            </tr>
+                                            <tr>
+                                                <td>S005</td>
+                                                <td>First secondary requirement</td>
+                                                <td>Critical</td>
+                                                <td>Assessed by 2 medical professionals</td>
+                                                <td>Not changed</td>
+                                                <td>Yes</td>
+                                                <td>GOTO</td>
+                                            </tr>
+                                            <tr>
+                                                <td>S006</td>
+                                                <td>First secondary requirement</td>
+                                                <td>Critical</td>
+                                                <td>Assessed by 2 medical professionals</td>
+                                                <td>Not changed</td>
+                                                <td>Yes</td>
+                                                <td>GOTO</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </tr> -->
+                                <tr>
+                                    <td>P002</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P003</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P004</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P005</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P006</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P007</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P008</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P009</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P010</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P011</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P012</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P013</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P014</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P015</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P016</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P017</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P018</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P019</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P020</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P021</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P022</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P023</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P024</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                                <tr>
+                                    <td>P025</td>
+                                    <td>First primary requirement</td>
+                                    <td>Meets the need of a breach birth</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

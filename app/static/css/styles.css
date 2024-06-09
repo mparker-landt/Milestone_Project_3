@@ -40,6 +40,23 @@ select {
     gap: 1rem;
 }
 
+.card-head-mod {
+    display: ruby;
+}
+
+.report-grid {
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+    display: grid;
+    border-radius: 10px;
+
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 1rem;
+
+    width: 100%;
+}
+
 .dashboard-item {
     border: 1px solid var(--req_blue);
     border-radius: 10px;
@@ -116,12 +133,19 @@ td:hover {
     display: flex;
     flex-direction: row;
 
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
+    justify-content: center; 
 
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
 .flex-body {
     display: flex;
     flex-direction: row;
+}
+
+.modal-page {
+    max-width: 95%;
+    margin-left: 3%;
+    margin-top: 2rem;
 }
