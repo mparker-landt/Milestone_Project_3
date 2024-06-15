@@ -7,7 +7,7 @@
 {% block content %}
     <div id="dashboard-grid">
         
-        <div class="card shadow dashboard-item border-bottom-primary" > <!-- data-toggle="modal" data-target="#projectModal" -->
+        <div class="card shadow dashboard-item border-bottom-primary" data-toggle="modal" data-target="#projectModal">
             <h3 class="card-header dashboard-item-header">Project ID</h3>
             <p class="card-body dashboard-item-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
@@ -69,7 +69,7 @@
 
     <!-- Project Card Modal-->
     <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-page" role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add project</h5>

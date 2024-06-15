@@ -8,25 +8,16 @@
 
     <div class="flex-page">
         <div class="flex-title">
-            <!-- <label for="project"></label>
-            <select name="project" id="project">
-                <option>Project</option>
-                <option>D2311</option>
-                <option>D2312</option>
-                <option>D2313</option>
-                <option>D2314</option>
-                <option>D2315</option>
-            </select> -->
             <div class="dropdown mb-4">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Project
                 </button>
                 <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">D2311</a>
+                    <!-- <a class="dropdown-item" href="#">D2311</a>
                     <a class="dropdown-item" href="#">D2312</a>
                     <a class="dropdown-item" href="#">D2313</a>
                     <a class="dropdown-item" href="#">D2314</a>
-                    <a class="dropdown-item" href="#">D2315</a>
+                    <a class="dropdown-item" href="#">D2315</a> -->
                     {% for project in projects|sort(attribute="id") %}
                         <a class="dropdown-item" href="#">{{project.title}}</a>
                     {% endfor %}

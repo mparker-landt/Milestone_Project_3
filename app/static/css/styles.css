@@ -149,3 +149,8 @@ td:hover {
     margin-left: 3%;
     margin-top: 2rem;
 }
+
+.modal-reqs {
+    text-align: center;
+    padding-bottom: 2%;
+}

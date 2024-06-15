@@ -34,24 +34,8 @@ from app.models import Project #, Primary_Req, Secondary_Req, Test
 @app.route('/')
 @app.route('/index')
 def index():
-    # Connect to the database 
-    # conn = psycopg2.connect(database="flask_db", user="postgres", password="rootuser", host="localhost", port="5432")
-  
-    # create a cursor 
-    # cur = conn.cursor()
-  
-    # Select all products from the table 
-    # cur.execute('''SELECT * FROM products''')
-  
-    # Fetch the data 
-    # data = cur.fetchall()
-  
-    # close the cursor and connection 
-    # cur.close()
-    # conn.close()
-  
-    # projects = list(Project.query.order_by(Project.id).all())
-    return render_template('index.html')
+    projects = list(Project.query.order_by(Project.id).all())
+    return render_template('index.html', projects=projects)
 
 @app.route("/add_project", methods=["GET", "POST"])
 def add_project():
@@ -71,12 +55,14 @@ def add_project():
 # Displays in a table pattern
 @app.route("/project_reqs")
 def project_reqs():
-    return render_template("project_reqs.html")
+    projects = list(Project.query.order_by(Project.id).all())
+    return render_template("project_reqs.html", projects=projects)
 
 # Path for Tests Page. Displays available test of a specifically chosen project in a grid pattern
 @app.route("/test_reports")
 def test_reports():
-    return render_template("test_reports.html")
+    projects = list(Project.query.order_by(Project.id).all())
+    return render_template("test_reports.html", projects=projects)
 
 
 @app.route("/delete_project/<int:project_id>")
