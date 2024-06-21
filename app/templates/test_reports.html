@@ -13,11 +13,6 @@
                     Project
                 </button>
                 <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                    <!-- <a class="dropdown-item" href="#">D2311</a>
-                    <a class="dropdown-item" href="#">D2312</a>
-                    <a class="dropdown-item" href="#">D2313</a>
-                    <a class="dropdown-item" href="#">D2314</a>
-                    <a class="dropdown-item" href="#">D2315</a> -->
                     {% for project in projects|sort(attribute="id") %}
                         <a class="dropdown-item" href="#">{{project.title}}</a>
                     {% endfor %}
@@ -26,16 +21,66 @@
         </div>
         <div class="flex-body">
             <div class="report-grid">
-                <div class="card shadow dashboard-item dashboard-item-new border-bottom-primary" data-toggle="modal" data-target="#testModal">
-                    <h3>Test 1</h3>
-                </div>
-                {% for test_report in test_reports|sort(attribute="id") %}
-                    <div class="card shadow dashboard-item dashboard-item-new border-bottom-primary">
-                        <h3>{{test_report.id}}</h3>
+                {% for test in tests %}
+                    <div class="card shadow dashboard-item dashboard-item-new border-bottom-primary"  data-toggle="modal" data-target="#testModal{{test.id}}">
+                        <h3>{{test.id}}</h3>
+                    </div>
+
+                     <!-- Project Card Modal-->
+                    <div class="modal fade" id="testModal{{test.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">               
+                                    <h5 class="modal-title" id="exampleModalLabel">{{test.id}}</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{test.description}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{test.test_date}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{test.reporter}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{test.report}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{test.project_id}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-danger btn-icon-split" href="{{ url_for('delete_test', test_id=test.id) }}"> 
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-trash"></i>  
+                                        </span>
+                                        <span class="text">
+                                            Delete
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
 
-                <div id="AddTest" class="card shadow dashboard-item dashboard-item-new border-bottom-primary ">
+                <div class="card shadow dashboard-item dashboard-item-new border-bottom-primary" data-toggle="modal" data-target="#AddTest">
                     <span><i class="fa fa-solid fa-plus"></i></span>
                     <h4>Add Test Report</h4>
                 </div>
@@ -43,30 +88,63 @@
         </div>
     </div>
 
-    <!-- Project Card Modal-->
-    <div class="modal fade modal-page" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-page" role="document">
+    <!-- New Project Modal-->
+    <div class="modal fade" id="AddTest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Test Title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add test</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">x</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                Test Body Information
+                                <form method="POST" class="reqs-form" action="{{url_for('add_test')}}">
+                                    <div>
+                                        <label for="description">DESCRIPTION</label>
+                                        <input name="description" id="description" type="text">
+                                    </div>
+
+                                    <div>
+                                        <label for="test_date">TEST DATE</label>
+                                        <input name="test_date" id="test_date" type="datetime-local">
+                                    </div>
+
+                                    <div>
+                                        <label for="reporter">REPORTER</label>
+                                        <input name="reporter" id="reporter" type="text">
+                                    </div>
+
+                                    <div>
+                                        <label for="report">REPORT</label>
+                                        <input name="report" id="report" type="checkbox">
+                                    </div>
+
+                                    <div>
+                                        <select id="project_id" name="project_id" class="validate" required>
+                                            <option value="" disabled selected>Choose Project</option>
+                                            {% for project in projects %}
+                                                <option value="{{ project.id }}">{{ project.title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <label for="project_id">Project</label>
+                                    </div>
+
+                                    <div>
+                                        <button type="submit">ADD</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
-                    <!-- <a class="btn btn-primary" href={{ url_for('project_reqs') }}>Go to Project Reqs</a> -->
                 </div>
             </div>
         </div>
     </div>
+
 {% endblock %}

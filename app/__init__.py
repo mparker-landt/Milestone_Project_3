@@ -2,10 +2,12 @@ import os
 import re
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
+# login = LoginManager(app)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 if os.environ.get("DEVELOPMENT") == "True":

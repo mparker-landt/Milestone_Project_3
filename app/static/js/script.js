@@ -29,10 +29,10 @@ $(function() {
 //     });
 // });
 
-$(function() {
-    $("#AddTest").click(function() {
-        $(test.clone()).insertBefore('#AddTest');
-    });
-});
+// $(function() {
+//     $("#AddTest").click(function() {
+//         $(test.clone()).insertBefore('#AddTest');
+//     });
+// });
 
 

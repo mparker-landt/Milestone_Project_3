@@ -5,17 +5,62 @@
 {% endblock %}
 
 {% block content %}
-    <div id="dashboard-grid">
-        
-        <div class="card shadow dashboard-item border-bottom-primary" data-toggle="modal" data-target="#projectModal">
-            <h3 class="card-header dashboard-item-header">Project ID</h3>
-            <p class="card-body dashboard-item-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-
+    
+    <div id="dashboard-grid"> 
         {% for project in projects %}
-            <div class="card shadow dashboard-item border-bottom-primary">
+            <div class="card shadow dashboard-item border-bottom-primary" data-toggle="modal" data-target="#projectModal{{project.id}}">      
                 <h3 class="card-header dashboard-item-header"> {{project.title}} </h3>
                 <p class="card-body dashboard-item-body"> {{project.description}} </p>
+            </div>
+
+            <!-- Project Card Modal-->
+            <div class="modal fade modal-page" id="projectModal{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-page" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            
+                            <h5 class="modal-title" id="exampleModalLabel">{{project.title}}</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{project.description}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-danger btn-icon-split" href="{{ url_for('delete_project', project_id=project.id) }}"> 
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-trash"></i>  
+                                </span>
+                                <span class="text">
+                                    Delete
+                                </span>
+                            </a>
+                            <a class="btn btn-secondary btn-icon-split" href="{{ url_for('edit_project', project_id=project.id) }}">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-info-circle"></i>  
+                                </span>
+                                <span class="text">
+                                    Edit
+                                </span>
+                            </a>
+                            <a class="btn btn-info btn-icon-split" href={{ url_for('project_reqs') }}>
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-arrow-right"></i>  
+                                </span>
+                                <span class="text">
+                                    Project Reqs
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         {% endfor %}
 
@@ -25,49 +70,7 @@
         </div>
     </div>
 
-    <!-- Basic Card Example -->
-    <!-- <div class="card shadow mb-4">
-        <div class="card-header card-head-mod py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="card-body">
-            The styling for this basic card example is created by using default Bootstrap
-            utility classes. By using utility classes, the style of the card component can be
-            easily modified with no need for any custom CSS!
-        </div>
-    </div> -->
-
-    <!-- Project Card Modal-->
-    <div class="modal fade modal-page" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-page" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Project Title</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                Project Body Information
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
-                    <a class="btn btn-primary" href={{ url_for('project_reqs') }}>Go to Project Reqs</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Project Card Modal-->
+    <!-- New Project Modal-->
     <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -81,14 +84,20 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <form method="POST" action="{{url_for('add_project')}}">
-                                    <label for="title">TITLE</label>
-                                    <input name="title" id="title" type="text" required>
+                                <form method="POST" class="reqs-form" action="{{url_for('add_project')}}">
+                                    <div>
+                                        <label for="title">TITLE</label>
+                                        <input name="title" id="title" type="text" required>
+                                    </div>
 
-                                    <label for="description">DESCRIPTION</label>
-                                    <input name="description" id="description" type="text" required>
+                                    <div>
+                                        <label for="description">DESCRIPTION</label>
+                                        <input name="description" id="description" type="text" required>
+                                    </div>
 
-                                    <button type="submit">ADD</button>
+                                    <div>
+                                        <button type="submit">ADD</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -97,13 +106,8 @@
                 <div class="modal-footer">
                     <!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
                     <!-- <a class="btn btn-primary" href={{ url_for('project_reqs') }}>ADD</a> -->
-                    
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
-
-<!-- {%if name %}
-{% else %}
-{% endif %} -->

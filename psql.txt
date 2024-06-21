@@ -1,0 +1,311 @@
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Password for user postgres:
+
+psql (16.3)
+WARNING: Console code page (850) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# \c milestone3
+You are now connected to database "milestone3" as user "postgres".
+milestone3=# \dt
+          List of relations
+ Schema |  Name   | Type  |  Owner
+--------+---------+-------+----------
+ public | project | table | postgres
+ public | test    | table | postgres
+(2 rows)
+
+
+milestone3=# zdt test
+milestone3-# \dt test
+        List of relations
+ Schema | Name | Type  |  Owner
+--------+------+-------+----------
+ public | test | table | postgres
+(1 row)
+
+
+milestone3-# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_project_id" FOREIGN KEY (id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3-# ALTER TABLE test DROP CONSTRAINT fk_project_id
+milestone3-# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_project_id" FOREIGN KEY (id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3-# ALTER TABLE test DROP CONSTRAINT fk_project_id
+milestone3-# \d+ project
+                                                                 Table "public.project"
+   Column    |         Type          | Collation | Nullable |               Default               | Storage  | Compression | Stats target | Description
+-------------+-----------------------+-----------+----------+-------------------------------------+----------+-------------+--------------+-------------
+ id          | integer               |           | not null | nextval('project_id_seq'::regclass) | plain    |             |              |
+ title       | character varying(25) |           | not null |                                     | extended |             |              |
+ description | text                  |           | not null |                                     | extended |             |              |
+Indexes:
+    "project_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "test" CONSTRAINT "fk_project_id" FOREIGN KEY (id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3-# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_project_id" FOREIGN KEY (id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3-# ALTER TABLE test RENAME CONSTRAINT fk_project_id TO project_id
+milestone3-# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_project_id" FOREIGN KEY (id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3-# db.create_all()
+milestone3-# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_project_id" FOREIGN KEY (id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3-# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_project_id" FOREIGN KEY (id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3-# ALTER TABLE test RENAME CONSTRAINT id TO project_id;
+ERROR:  syntax error at or near "zdt"
+LINE 1: zdt test
+        ^
+milestone3=# ALTER TABLE test RENAME CONSTRAINT fk_project_id TO project_id;
+ALTER TABLE
+milestone3=# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "project_id" FOREIGN KEY (id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3=# ALTER TABLE test RENAME CONSTRAINT project_id TO fk_project_id
+milestone3-# ALTER TABLE test RENAME CONSTRAINT project_id TO fk_project_id;
+ERROR:  syntax error at or near "ALTER"
+LINE 2: ALTER TABLE test RENAME CONSTRAINT project_id TO fk_project_...
+        ^
+milestone3=# ALTER TABLE test RENAME CONSTRAINT project_id TO fk_project_id;
+ALTER TABLE
+milestone3=# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_project_id" FOREIGN KEY (id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3=# ALTER TABLE test ADD project_id INT;
+ALTER TABLE
+milestone3=# UPDATE test SET project_id = project.id FROM project WHERE test.id = project.id;
+UPDATE 0
+milestone3=# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+ project_id  | integer                     |           |          |                                  | plain    |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_project_id" FOREIGN KEY (id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3=# ALTER TABLE test DROP CONSTRAINT fk_foreign_key;
+ERROR:  constraint "fk_foreign_key" of relation "test" does not exist
+milestone3=# ALTER TABLE test DROP CONSTRAINT fk_project_key;
+ERROR:  constraint "fk_project_key" of relation "test" does not exist
+milestone3=# ALTER TABLE test DROP CONSTRAINT fk_project_id;
+ALTER TABLE
+milestone3=# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+ project_id  | integer                     |           |          |                                  | plain    |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Access method: heap
+
+
+milestone3=# ALTER TABLE test ADD CONSTRAINT fk_project_id FOREIGN KEY (project_id) REFERENCES project(id);
+ALTER TABLE
+milestone3=# \d+ test
+                                                                    Table "public.test"
+   Column    |            Type             | Collation | Nullable |             Default              | Storage  | Compression | Stats target | Description
+-------------+-----------------------------+-----------+----------+----------------------------------+----------+-------------+--------------+-------------
+ id          | integer                     |           | not null | nextval('test_id_seq'::regclass) | plain    |             |              |
+ description | character varying(255)      |           |          |                                  | extended |             |              |
+ test_date   | timestamp without time zone |           |          |                                  | plain    |             |              |
+ reporter    | character varying(50)       |           |          |                                  | extended |             |              |
+ report      | character varying(50)       |           |          |                                  | extended |             |              |
+ project_id  | integer                     |           |          |                                  | plain    |             |              |
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_project_id" FOREIGN KEY (project_id) REFERENCES project(id)
+Access method: heap
+
+
+milestone3=#
+
+
+
+
+#################################################################################################################################
+
+Table "public.project"
+   Column    |         Type          | Collation | Nullable |               Default               | Storage  | Compression | Stats target | Description
+-------------+-----------------------+-----------+----------+-------------------------------------+----------+-------------+--------------+-------------
+ id          | integer               |           | not null | nextval('project_id_seq'::regclass) | plain    |             |              |
+ title       | character varying(25) |           | not null |                                     | extended |             |              |
+ description | text                  |           | not null |                                     | extended |             |              |
+Indexes:
+    "project_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "test" CONSTRAINT "fk_project_id" FOREIGN KEY (project_id) REFERENCES project(id)
+    TABLE "primary_req" CONSTRAINT "fk_project_id" FOREIGN KEY (project_id) REFERENCES project(id)
+
+Table "public.primary_req"
+        Column        |          Type          | Collation | Nullable |                 Default                 | Storage  | Compression | Stats target | Description
+----------------------+------------------------+-----------+----------+-----------------------------------------+----------+-------------+--------------+-------------
+ id                   | integer                |           | not null | nextval('primary_req_id_seq'::regclass) | plain    |             |              |
+ description          | character varying(255) |           |          |                                         | extended |             |              |
+ acceptance_rationale | character varying(255) |           |          |                                         | extended |             |              |
+ project_id           | integer                |           |          |                                         | plain    |             |              |
+Indexes:
+    "primary_req_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_project_id" FOREIGN KEY (project_id) REFERENCES project(id)
+Referenced by:
+    TABLE "secondary_req" CONSTRAINT "fk_primary_req_id" FOREIGN KEY (primary_req_id) REFERENCES primary_req(id)
+
+Table "public.secondary_req"
+       Column        |          Type          | Collation | Nullable |                  Default                  | Storage  | Compression | Stats target | Description
+---------------------+------------------------+-----------+----------+-------------------------------------------+----------+-------------+--------------+-------------
+ id                  | integer                |           | not null | nextval('secondary_req_id_seq'::regclass) | plain    |             |              |
+ description         | character varying(255) |           |          |                                           | extended |             |              |
+ need                | character varying(50)  |           |          |                                           | extended |             |              |
+ acceptance_criteria | character varying(255) |           |          |                                           | extended |             |              |
+ changed             | character varying(50)  |           |          |                                           | extended |             |              |
+ tested              | boolean                |           |          |                                           | plain    |             |              |
+ primary_req_id      | integer                |           |          |                                           | plain    |             |              |
+Indexes:
+    "secondary_req_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_primary_req_id" FOREIGN KEY (primary_req_id) REFERENCES primary_req(id)
+
+
+
+
+
+
+
+
+
+
+
+
