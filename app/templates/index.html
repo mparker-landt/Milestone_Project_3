@@ -31,6 +31,33 @@
                                         {{project.description}}
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-5">
+                                        <div class="card shadow mb-4">
+                                            <!-- Card Header - Dropdown -->
+                                            <div class="card-header py-3">
+                                                <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                                            </div>
+                                            <!-- Card Body -->
+                                            <div class="card-body">
+                                                <div class="chart-pie pt-4">
+                                                    <div class="chartjs-size-monitor">
+                                                        <div class="chartjs-size-monitor-expand">
+                                                            <div class=""></div>
+                                                        </div>
+                                                        <div class="chartjs-size-monitor-shrink">
+                                                            <div class=""></div>
+                                                        </div>
+                                                    </div>
+                                                    <canvas id="myPieChart" style="display: block; width: 254px; height: 253px;" width="254" height="253" class="chartjs-render-monitor"></canvas>
+                                                </div>
+                                                <hr>
+                                                Styling for the donut chart can be found in the
+                                                <code>/js/demo/chart-pie-demo.js</code> file.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -50,7 +77,15 @@
                                     Edit
                                 </span>
                             </a>
-                            <a class="btn btn-info btn-icon-split" href={{ url_for('project_reqs') }}>
+                            <a class="btn btn-info btn-icon-split" href={{ url_for('test_reports') }}>
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-arrow-right"></i>  
+                                </span>
+                                <span class="text">
+                                    Tests
+                                </span>
+                            </a>
+                            <a class="btn btn-success btn-icon-split" href={{ url_for('project_reqs') }}>
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-right"></i>  
                                 </span>

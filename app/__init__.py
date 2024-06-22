@@ -2,6 +2,7 @@ import os
 import re
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from flask_login import LoginManager
 if os.path.exists("env.py"):
     import env
@@ -20,4 +21,4 @@ else:
 
 db = SQLAlchemy(app)
 
-from app import routes
+from app import routes, errors

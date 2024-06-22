@@ -16,23 +16,3 @@ $(function() {
                 .before('<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
     });
 });
-
-// $(function() {
-//     $("#AddGrid").click(function() {
-//         var gridCount = $("#dashboard-grid").children().length;
-//         console.log(gridCount);
-
-//         let cardId = "card" + gridCount;
-//         console.log(cardId);
-
-//         $(card.clone()).attr('id',cardId).insertBefore('#AddGrid');
-//     });
-// });
-
-// $(function() {
-//     $("#AddTest").click(function() {
-//         $(test.clone()).insertBefore('#AddTest');
-//     });
-// });
-
-

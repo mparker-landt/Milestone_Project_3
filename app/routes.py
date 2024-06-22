@@ -53,7 +53,29 @@ def delete_project(project_id):
 def project_reqs():
     projects = list(Project.query.order_by(Project.id).all())
     primarys = list(Primary.query.order_by(Primary.id).all())
-    return render_template("project_reqs.html", projects=projects)
+    secondarys = list(Secondary.query.order_by(Secondary.id).all())
+    return render_template("project_reqs.html", projects=projects, primarys=primarys, secondarys=secondarys)
+
+@app.route("/add_primary", methods=["GET", "POST"])
+def add_primary():
+    projects = list(Project.query.order_by(Project.title).all())
+    if request.method == "POST":
+        primary = Primary(
+            description=request.form.get("description"),
+            acceptance_rationale=request.form.get("acceptance_rationale"),
+            project_id=request.form.get("project_id")
+        )
+        db.session.add(primary)
+        db.session.commit()
+        return redirect(url_for("project_reqs"))
+    return render_template(url_for("project_reqs"), projects=projects)
+
+@app.route("/delete_primary/<int:primary_id>")
+def delete_primary(primary_id):
+    primary = Primary.query.get_or_404(primary_id)
+    db.session.delete(primary)
+    db.session.commit()
+    return redirect(url_for("project_reqs"))
 
 
 #####################################################################################################################
