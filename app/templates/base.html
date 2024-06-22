@@ -116,20 +116,26 @@
 
                             <div class="topbar-divider d-none d-sm-block"></div>
 
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal">
-                                <i class="fas fa-sm text-white-50"></i> 
-                                Profile
-                            </a>
+                            {% if current_user.is_anonymous %}
+                                <a href={{ url_for('login') }} class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                    <i class="fas fa-sm text-white-50"></i> 
+                                    Log In
+                                </a>
+                            {% else %}
+                                <a  href="{{ url_for('user', username=current_user.username) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                    <i class="fas fa-sm text-white-50"></i> 
+                                    Profile
+                                </a>
+
+                                <div class="topbar-divider d-none d-sm-block"></div>
+
+                                <a href={{ url_for('logout') }} class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                    <i class="fas fa-sm text-white-50"></i> 
+                                    Log Out
+                                </a>
+                            {% endif %}
 
                             <div class="topbar-divider d-none d-sm-block"></div>
-
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal">
-                                <i class="fas fa-sm text-white-50"></i> 
-                                Log Out
-                            </a>
-
-                            <div class="topbar-divider d-none d-sm-block"></div>
-
                         </ul>
 
                     </nav>

@@ -8,7 +8,8 @@ if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
-# login = LoginManager(app)
+login = LoginManager(app)
+login.login_view = 'login'
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 if os.environ.get("DEVELOPMENT") == "True":
