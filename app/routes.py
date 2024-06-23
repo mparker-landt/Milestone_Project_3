@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import sqlalchemy as sa
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm
@@ -54,12 +54,23 @@ def delete_project(project_id):
 # Path for project Requirements Page. 
 # Displays primary and related secondary requirements of a specifically chosen project 
 # Displays in a table pattern
-@app.route("/project_reqs")
-def project_reqs():
+@app.route("/project_reqs/<int:project_id>")
+def project_reqs(project_id):
     projects = list(Project.query.order_by(Project.id).all())
-    primarys = list(Primary.query.order_by(Primary.id).all())
+    # primarys = list(Primary.query.order_by(Primary.id).all())
+    primarys = Primary.query.filter_by(project_id=Primary.project_id).all()
     secondarys = list(Secondary.query.order_by(Secondary.id).all())
-    return render_template("project_reqs.html", projects=projects, primarys=primarys, secondarys=secondarys)
+    return render_template("project_reqs.html", projects=projects, primarys=primarys, project_id=project_id)
+
+# Path for project Requirements Page. 
+# Displays primary and related secondary requirements of a specifically chosen project 
+# Displays in a table pattern
+@app.route("/primary_reqs", methods=["POST"])
+def primary_reqs():
+    project_id = request.form.get('project_id')
+    primarys = Primary.query.filter_by(project_id=project_id).all()
+    primarys_list = [p.serialize() for p in primarys]  # assuming you have a serialize method
+    return jsonify({'primarys': primarys_list})
 
 @app.route("/add_primary", methods=["GET", "POST"])
 def add_primary():

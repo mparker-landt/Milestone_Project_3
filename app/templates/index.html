@@ -85,7 +85,7 @@
                                     Tests
                                 </span>
                             </a>
-                            <a class="btn btn-success btn-icon-split" href={{ url_for('project_reqs') }}>
+                            <a class="btn btn-success btn-icon-split" href="{{ url_for('project_reqs', project_id=project.id) }}">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-right"></i>  
                                 </span>
@@ -140,7 +140,6 @@
                 </div>
                 <div class="modal-footer">
                     <!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
-                    <!-- <a class="btn btn-primary" href={{ url_for('project_reqs') }}>ADD</a> -->
                 </div>
             </div>
         </div>

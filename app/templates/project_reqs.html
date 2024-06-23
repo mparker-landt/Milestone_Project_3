@@ -8,15 +8,14 @@
     <div class="flex-page">
         <div class="flex-title">
             <div class="dropdown mb-4">
-                <select id="projectChoose" class="btn btn-primary dropdown-toggle">
+                <select id="projectChoose" class="btn btn-primary dropdown-toggle" >
                     {% for project in projects|sort(attribute="id") %}
-                        <option value="{{project}} {% if project == "projects" %} selected {% endif %}">{{project.title}}</option>
+                        <option value="{{project.id}}" {% if project_id == project.id %} selected {% endif %} >{{project.title}}</option>
                     {% endfor %}
                 </select>
             </div>
         </div>
         <div class="flex-body">
-
             <!-- DataTales Example -->
             <div class="card shadow page-table border-left-primary">
                 <div class="card-body">
@@ -30,6 +29,7 @@
                                     </th>
                                     <th>Description</th>
                                     <th>Acceptance Rationale</th>
+                                    <th>Project</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -37,19 +37,21 @@
                                     <th>Primary Key</th>
                                     <th>Description</th>
                                     <th>Acceptance Rationale</th>
+                                    <th>Project</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                {% for primary in primarys|sort(attribute="id") %}
-                                        <tr>
-                                            <td>
-                                                {{primary.id}}
-                                                <a class="btn btn-secondary btn-circle btn-sm" href=""><i class="fas fa-info-circle"></i></a>
-                                                <a class="btn btn-danger btn-circle btn-sm" href="{{ url_for('delete_primary', primary_id=primary.id) }}"><i class="fas fa-trash"></i></a>
-                                            </td>
-                                            <td>{{primary.description}}</td>
-                                            <td>{{primary.acceptance_rationale}}</td>
-                                        </tr>
+                                {% for primary in primarys %}
+                                    <tr>
+                                        <td>
+                                            {{primary.id}}
+                                            <a class="btn btn-secondary btn-circle btn-sm" href=""><i class="fas fa-info-circle"></i></a>
+                                            <a class="btn btn-danger btn-circle btn-sm" href="{{ url_for('delete_primary', primary_id=primary.id) }}"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                        <td>{{primary.description}}</td>
+                                        <td>{{primary.acceptance_rationale}}</td>
+                                        <td>{{primary.project_id}}</td>
+                                    </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
@@ -80,7 +82,7 @@
                                     </div>
 
                                     <div>
-                                        <label for="acceptance_rationale">AR</label>
+                                        <label for="acceptance_rationale">ACCEPTANCE REQUIREMENT</label>
                                         <input name="acceptance_rationale" id="test_date" type="text">
                                     </div>
 
@@ -107,5 +109,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
