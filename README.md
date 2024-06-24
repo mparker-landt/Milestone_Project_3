@@ -1,6 +1,6 @@
 # Volo Requirements System
 
-Volo Requirements System is a full stack application that meets the requirement of a user creating projects and primary and secondary requirements for said projects.\
+Volo Requirements System is a full stack application that meets the requirement of a user creating projects and primary and secondary requirements for the corresponding projects.\
 This project was created to meet the criteria of the Code Institute Milestone Project 3.
 
 ![Responsive screenshot](assets/images/readme/ms2-amiresponsive.png)
@@ -9,7 +9,7 @@ View Repository in GitHub Pages:\
 https://github.com/mparker-landt/Milestone_Project_3
 
 View Website Link:\
-https://mparker-landt.github.io/Milestone_Project_3/
+
 
 Author: Marcus Parker\
 Github: [mparker-landt](https://github.com/mparker-landt)
@@ -22,7 +22,6 @@ Github: [mparker-landt](https://github.com/mparker-landt)
     + [Returning User Stories](#returning-user-stories "Returning User Stories")
   + [Design](#design "Design")
     + [Wireframes](#wireframes "Wireframes")
-    + [Flow Charts](#flow-charts "Flow Charts")
     + [ERD Diagram](#erd-diagram "ERD Diagram")
     + [Colour Scheme](#colour-scheme "Colour Scheme")
     + [Typography](#typography "Typography")
@@ -47,29 +46,26 @@ Github: [mparker-landt](https://github.com/mparker-landt)
 
 ## UX
 ### User Demographic
-TBC
+This web app is targeted towards a small business who want to add projects in development and add requirements related to the projects.
 
 ### User Stories
 #### First time Visitor Goals:
-* As a first-time visitor I want to .
-* As a first-time visitor I want to learn how to 
-* As a first-time visitor I want to be able to 
+* As a first-time visitor I want to be able to see Projects and Project details.
+* As a first-time visitor I want to learn how to add/edit and delete Projects and Requirements.
+* As a first-time visitor I want to be able to sign up for an account to use the website.
 
 #### Returning Visitor Goals:
-* As a returning user I want to 
-* As a returning user I want to be able to 
-* As a returning user I want to be able to 
+* As a returning user I want to login to my account with a username and password.
+* As a returning user I want to be able to explore the Projects and related requirements.
+* As a returning user I want to be able to add/edit and delete Projects and their related requirements.
 
 
 ### Design
 #### Wireframes
-Wireframes were created with draw.io.
-
-#### Flow Charts
-Flow charts were created with draw.io.
+Wireframes were created with draw.io. The design was heavily influenced by a StartBootstrap demo that provided a professional feeling website whilst allowing for flexible customisation.
 
 #### ERD Diagrams
-ERD Diagrams were created with draw.io
+ERD Diagrams were drawn roughly with hand at the beginning of the project. After the database and tables were created in psql for the project the ERD diagrams was auto generated using the program pgAdmin4. This program allows for the visualistion and editing of the SQL database.
 
 #### Colour Scheme
 TBC
@@ -115,7 +111,7 @@ The website was designed to have many features added in the future:
 - [Flask](https://flask.palletsprojects.com/en/3.0.x/)
 - [SQL](https://en.wikipedia.org/wiki/SQL)
 - [Postgresql](https://www.postgresql.org/)
-- [Psycopg2](https://www.psycopg.org/)
+- [SQLAlchemy](https://www.psycopg.org/)
 ### External Resources
 - [Start Bootstrap](https://startbootstrap.com/) - Used as a template to adapt the design of the UI from.
 - [Font Awesome](https://fontawesome.com/) - Used to acquire icons for the project.
@@ -184,7 +180,7 @@ Cloning the repository
 - Clone the project using the link with the tool of your choice (Git Terminal, Github Desktop, Sourcetree etc)
 
 ### Deployment
-The website was deployed live using Heroku and ElephantSQL to host the backend and frontend into a working package.
+The website was deployed live using Heroku to host the backend and frontend into a working package.
 
 ## Credits and Acknowledgements
 With special thanks to:
