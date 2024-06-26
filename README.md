@@ -3,7 +3,7 @@
 Volo Requirements System is a full stack application that meets the requirement of a user creating projects and primary and secondary requirements for the corresponding projects.\
 This project was created to meet the criteria of the Code Institute Milestone Project 3.
 
-![Responsive screenshot](assets/images/readme/ms2-amiresponsive.png)
+![AmIResponsive Screenshot](assets/images/readme/ms2-amiresponsive.png)
 
 View Repository in GitHub Pages:\
 https://github.com/mparker-landt/Milestone_Project_3
@@ -50,31 +50,48 @@ This web app is targeted towards a small business who want to add projects in de
 
 ### User Stories
 #### First time Visitor Goals:
-* As a first-time visitor I want to be able to see Projects and Project details.
-* As a first-time visitor I want to learn how to add/edit and delete Projects and Requirements.
-* As a first-time visitor I want to be able to sign up for an account to use the website.
+- As a first-time visitor I want to be able to see Projects and Project details.
+- As a first-time visitor I want to learn how to add/edit and delete Projects and Requirements.
+- As a first-time visitor I want to be able to sign up for an account to use the website.
 
 #### Returning Visitor Goals:
-* As a returning user I want to login to my account with a username and password.
-* As a returning user I want to be able to explore the Projects and related requirements.
-* As a returning user I want to be able to add/edit and delete Projects and their related requirements.
+- As a returning user I want to login to my account with a username and password.
+- As a returning user I want to be able to explore the Projects and related requirements.
+- As a returning user I want to be able to add/edit and delete Projects and their related requirements.
 
 
 ### Design
 #### Wireframes
-Wireframes were created with draw.io. The design was heavily influenced by a StartBootstrap demo that provided a professional feeling website whilst allowing for flexible customisation.
+Wireframes were created with draw.io. The design was heavily influenced by a StartBootstrap demo that provided a professional feeling website whilst allowing for flexible customisation.\
+- Home Page
+![Wireframe Home Page](assets/images/Milestone3_Home.png)
+- Project Card Modal
+![Wireframe Home Page](assets/images/Milestone3_ProjectCard.png)
+- Requirements Page
+![Wireframe Home Page](assets/images/Milestone3_Reqs.png)
+- Test Report Page
+![Wireframe Home Page](assets/images/Milestone3_Tests.png)
+- Sign In Page
+![Wireframe Home Page](assets/images/Milestone3_SignIn.png)
+- Register Page
+![Wireframe Home Page](assets/images/Milestone3_Register.png)
 
 #### ERD Diagrams
-ERD Diagrams were drawn roughly with hand at the beginning of the project. After the database and tables were created in psql for the project the ERD diagrams was auto generated using the program pgAdmin4. This program allows for the visualistion and editing of the SQL database.
+ERD Diagrams were drawn roughly with hand at the beginning of the project. After the database and tables were created in psql for the project the ERD diagrams was auto generated using the program pgAdmin4. This program allows for the visualistion and editing of the SQL database.\
+![ERD Diagram](assets/images/Milestone3_ERD.png)
 
 #### Colour Scheme
-TBC
+For the colour scheme a blue and white scheme were used. This was part of the Start Bootstrap demo but suited the professional aspect of the webpage whilst keeping a nice to look visual aspect.
+- <span style="color:#4E73DF">#4E73DF</span> - Used for the menu, buttons and borders for content
+- <span style="color:#FFFFFF">#FFFFFF</span> - Used for the header, footer and certain font colours
+- <span style="color:#F8F9FC">#F8F9FC</span> - Used for main body of the pages, as it is off white the white of content on the page were made more visually appealing and attracted attention immedietaly.
 
 #### Typography
-TBC
+The font used for the webpage was Nunito, a Sans Serif typeface.
+[Nunito](https://fonts.google.com/specimen/Nunito)
 
 #### Images
-Due to the professional setting for the application no images were used in the project.
+Due to the professional setting for the application no images were used in the project. Icons for the website were aquired from Font Awesome.
 
 ## Features
 ### Functional Features
@@ -87,17 +104,40 @@ The application offers the features:
 The website was designed to be a simple yet functional multipage site that could be used in a professional work setting.\
 The base template for the user interface was aquired from StartBootstrap. The demo used was [SB Admin 2](https://startbootstrap.com/theme/sb-admin-2) which was adapted upon to meet the demands for the project.\
 Designed to be desktop first and to provide information in a intuitive and clean manner.
-* Header
-* Footer
-* Menu
-* Projects Page
-* Requirements Page
+- Header\
+![Header Feature](assets/images/)
+- Footer\
+![Footer Feature](assets/images/)
+- Menu\
+![Menu Feature](assets/images/)
+- Projects Page\
+![Projects Page](assets/images/)
+- Project Card Modal\
+![Project Card Modal Feature](assets/images/)
+- Requirements Page\
+![Requirements Page](assets/images/)
+- Test Report Page\
+![Test Report Page](assets/images/)
+- Test Report Modal\
+![Test Report Modal Feature](assets/images/)
+- Sign In Page\
+![Sign In Page](assets/images/)
+- Register Page\
+![Register Page](assets/images/)
+- User Profile Page\
+![User Profile Page](assets/images/)
+- Error 404 Page\
+![Error 404 Page](assets/images/)
+- Error 500 Page\
+![Error 500 Page](assets/images/)
 
 ### Future Features
 The website was designed to have many features added in the future:
 - Requirements Freeze Archive
 - Testing Pages
 - Admin Levels
+- Profile Page Information
+- Much more Project, Requirement and Test Report Information 
 - At risk colour identification
 
 
@@ -115,10 +155,9 @@ The website was designed to have many features added in the future:
 ### External Resources
 - [Start Bootstrap](https://startbootstrap.com/) - Used as a template to adapt the design of the UI from.
 - [Font Awesome](https://fontawesome.com/) - Used to acquire icons for the project.
-- [W3 Schools](https://www.w3schools.com/) - Used to learn about certain code aspects and how to use them
-- [Stack Overflow](https://stackoverflow.com/) - Used to problem solve the code and solve issues.
-- [Draw.io](https://www.drawio.com/) - Used to create the wireframes and flow charts for the project.
-- [Miguelgrinberg Blog](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+- [Draw.io](https://www.drawio.com/) - Used to create the wireframes for the project.
+- [pgAdmin4](https://www.pgadmin.org/) - Used to create the ERD for the project. This tool was also used to aid in visually inspecting the SQL database for the project and the contained tables and columns
+- [Miguelgrinberg Blog](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) - A blog online that provided in great detail information and a walkthrough on how to build a Flask project in VS Code. This provided a tutorial on different topics such as templates, Web Forms, User Management, Date/Time implementation and Ajax.  
 
 ## Testing
 Continuous testing of the application was performed throughout its development period. The testing was performed primarily on Mobile Firefox although Google Chrome was also used.\
@@ -129,7 +168,7 @@ The website performance was tested using Google Chrome Developer Tools Lighthous
 For the webpage the Performance, Best Practices and SEO were 
 The Accessibility score was
 
-![Responsive screenshot](assets/images/readme/lighthouse.png)
+![Lighthouse Performance Screenshot](assets/images/readme/lighthouse.png)
 
 ### HTML Validator Testing
 https://validator.w3.org
@@ -152,11 +191,7 @@ This project was developed in an environment with the tools:
 - Github & Git - Version and Source Control to save the code and see the history.
 - Firefox Web Browser - User to view the frontend application and debug the frontend code.
 
-The base for the project was created using the Code Institute template:\
-https://github.com/Code-Institute-Org/ci-full-template
-
-The project is deployed on Github:\
-TBC
+The project is deployed on Github:
 
 To acquire the code:
 - Log into Github
@@ -184,5 +219,6 @@ The website was deployed live using Heroku to host the backend and frontend into
 
 ## Credits and Acknowledgements
 With special thanks to:
-* Lauren-Nicole Popich - Mentor from the Code Institute who provided help throughout the project and was always available for support.
-* Sarah Price - 
+- Lauren-Nicole Popich - Mentor from the Code Institute who provided help throughout the project and was always available for support.
+- Sarah Price - A colleague who suggested the idea for the project and helped produce the first Wireframes and ERD in rough draft form.
+- Blog - The blog [Miguelgrinberg Blog](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) about building a Flask Webpage was greatly used for learning for the project. Especially to set up the system of Flask and its Flask Modules in VS Code. 
