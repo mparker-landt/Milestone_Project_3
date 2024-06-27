@@ -3,7 +3,7 @@
 Volo Requirements System is a full stack application that meets the requirement of a user creating projects and primary and secondary requirements for the corresponding projects.\
 This project was created to meet the criteria of the Code Institute Milestone Project 3.
 
-![AmIResponsive Screenshot](assets/images/readme/ms2-amiresponsive.png)
+![AmIResponsive Screenshot](assets/images/readme/ms3-amiresponsive.png)
 
 View Repository in GitHub Pages:\
 https://github.com/mparker-landt/Milestone_Project_3
@@ -64,21 +64,21 @@ This web app is targeted towards a small business who want to add projects in de
 #### Wireframes
 Wireframes were created with draw.io. The design was heavily influenced by a StartBootstrap demo that provided a professional feeling website whilst allowing for flexible customisation.\
 - Home Page
-![Wireframe Home Page](assets/images/Milestone3_Home.png)
+![Wireframe Home Page](assets/images/milestone3-home.png)
 - Project Card Modal
-![Wireframe Home Page](assets/images/Milestone3_ProjectCard.png)
+![Wireframe Home Page](assets/images/milestone3-projectcard.png)
 - Requirements Page
-![Wireframe Home Page](assets/images/Milestone3_Reqs.png)
+![Wireframe Home Page](assets/images/milestone3-reqs.png)
 - Test Report Page
-![Wireframe Home Page](assets/images/Milestone3_Tests.png)
+![Wireframe Home Page](assets/images/milestone3-tests.png)
 - Sign In Page
-![Wireframe Home Page](assets/images/Milestone3_SignIn.png)
+![Wireframe Home Page](assets/images/milestone3-signin.png)
 - Register Page
-![Wireframe Home Page](assets/images/Milestone3_Register.png)
+![Wireframe Home Page](assets/images/milestone3-register.png)
 
 #### ERD Diagrams
 ERD Diagrams were drawn roughly with hand at the beginning of the project. After the database and tables were created in psql for the project the ERD diagrams was auto generated using the program pgAdmin4. This program allows for the visualistion and editing of the SQL database.\
-![ERD Diagram](assets/images/Milestone3_ERD.png)
+![ERD Diagram](assets/images/milestone3-erd.png)
 
 #### Colour Scheme
 For the colour scheme a blue and white scheme were used. This was part of the Start Bootstrap demo but suited the professional aspect of the webpage whilst keeping a nice to look visual aspect.

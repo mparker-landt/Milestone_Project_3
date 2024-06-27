@@ -8,6 +8,7 @@
     <div class="flex-page">
         <div class="flex-title">
             <div class="dropdown mb-4">
+                <!-- Dropdown to select an available project and it's related requirements from the database -->
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Project
                 </button>
@@ -19,22 +20,25 @@
             </div>
         </div>
         <div class="flex-body">
-            <div class="report-grid">
+            <!-- List of tests in an adaptable grid pattern -->
+            <div id="report-grid">
                 {% for test in tests %}
                     <div class="card shadow dashboard-item dashboard-item-new border-bottom-primary"  data-toggle="modal" data-target="#testModal{{test.id}}">
                         <h3>{{test.id}}</h3>
                     </div>
 
-                     <!-- Project Card Modal-->
+                     <!-- Test Report Card Modal-->
                     <div class="modal fade" id="testModal{{test.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
+                                <!-- Project Card Header, contains title and close button -->
                                 <div class="modal-header">               
                                     <h5 class="modal-title" id="exampleModalLabel">{{test.id}}</h5>
                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
                                 </div>
+                                <!-- Project Card Body, contains description of the Test -->
                                 <div class="modal-body">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -64,38 +68,46 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Footer for the Test card modal, contains buttons to edit/delete the test -->
                                 <div class="modal-footer">
-                                    <a class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-info-circle"></i>  
-                                        </span>
-                                        <span class="text">
-                                            Edit
-                                        </span>
-                                    </a>
-                                    <a class="btn btn-danger btn-icon-split" href="{{ url_for('delete_test', test_id=test.id) }}"> 
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-trash"></i>  
-                                        </span>
-                                        <span class="text">
-                                            Delete
-                                        </span>
-                                    </a>
+                                    {% if current_user.is_anonymous %}
+                                    {% else %}
+                                        <a class="btn btn-secondary btn-icon-split" aria-label="Button to edit a Test Report">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-info-circle"></i>  
+                                            </span>
+                                            <span class="text">
+                                                Edit
+                                            </span>
+                                        </a>
+                                        <a class="btn btn-danger btn-icon-split" href="{{ url_for('delete_test', test_id=test.id) }}" aria-label="Button to delete a Test Report"> 
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-trash"></i>  
+                                            </span>
+                                            <span class="text">
+                                                Delete
+                                            </span>
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
 
-                <div class="card shadow dashboard-item dashboard-item-new border-bottom-primary" data-toggle="modal" data-target="#AddTest">
-                    <span><i class="fa fa-solid fa-plus"></i></span>
-                    <h4>Add Test Report</h4>
-                </div>
+                <!-- Test Report Card that acts as a button to add a new test -->
+                {% if current_user.is_anonymous %}
+                {% else %}
+                    <div class="card shadow dashboard-item dashboard-item-new border-bottom-primary" data-toggle="modal" data-target="#AddTest">
+                        <span><i class="fa fa-solid fa-plus"></i></span>
+                        <h4>Add Test Report</h4>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
 
-    <!-- New Project Modal-->
+    <!-- New Project Modal, contains a form for user to enter test details and a button to submit -->
     <div class="modal fade" id="AddTest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

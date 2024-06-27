@@ -6,6 +6,7 @@
 
 {% block content %}
     
+    <!-- List of projects in an adaptable grid pattern -->
     <div id="dashboard-grid"> 
         {% for project in projects %}
             <div class="card shadow dashboard-item border-bottom-primary" data-toggle="modal" data-target="#projectModal{{project.id}}">      
@@ -17,13 +18,14 @@
             <div class="modal fade modal-page" id="projectModal{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-page" role="document">
                     <div class="modal-content">
+                        <!-- Project Card Header, contains title and close button -->
                         <div class="modal-header">
-                            
                             <h5 class="modal-title" id="exampleModalLabel">{{project.title}}</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
+                        <!-- Project Card Body, contains description of the Project and a pie chart for easy visuals -->
                         <div class="modal-body">
                             <div class="container-fluid">
                                 <div class="row">
@@ -60,38 +62,34 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Footer for the Project card modal, contains buttons to edit/delete the project and links to different pages -->
                         <div class="modal-footer">
-                            <a class="btn btn-danger btn-icon-split" href="{{ url_for('delete_project', project_id=project.id) }}"> 
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>  
-                                </span>
-                                <span class="text">
-                                    Delete
-                                </span>
-                            </a>
-                            <a class="btn btn-secondary btn-icon-split" href="{{ url_for('edit_project', project_id=project.id) }}">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-info-circle"></i>  
-                                </span>
-                                <span class="text">
-                                    Edit
-                                </span>
-                            </a>
-                            <a class="btn btn-info btn-icon-split" href={{ url_for('test_reports') }}>
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-arrow-right"></i>  
-                                </span>
-                                <span class="text">
-                                    Tests
-                                </span>
-                            </a>
-                            <a class="btn btn-success btn-icon-split" href="{{ url_for('project_reqs', project_id=project.id) }}">
+                            {% if current_user.is_anonymous %}
+                            {% else %}
+                                <a class="btn btn-danger btn-icon-split" href="{{ url_for('delete_project', project_id=project.id) }}" aria-label="Button to delete a project"> 
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>  
+                                    </span>
+                                    <span class="text">Delete</span>
+                                </a>
+                                <a class="btn btn-secondary btn-icon-split" href="{{ url_for('edit_project', project_id=project.id) }}" aria-label="Button to edit a project">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-info-circle"></i>  
+                                    </span>
+                                    <span class="text">Edit</span>
+                                </a>
+                            {% endif %}
+                            <a class="btn btn-info btn-icon-split" href={{ url_for('test_reports') }} aria-label="Button to navigate to Test Reports page with chosen project targeted">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-right"></i>  
                                 </span>
-                                <span class="text">
-                                    Project Reqs
+                                <span class="text">Tests</span>
+                            </a>
+                            <a class="btn btn-success btn-icon-split" href="{{ url_for('project_reqs', project_id=project.id) }}" aria-label="Button to navigate to Requirements page with chosen project targeted">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-arrow-right"></i>  
                                 </span>
+                                <span class="text">Project Reqs</span>
                             </a>
                         </div>
                     </div>
@@ -99,13 +97,17 @@
             </div>
         {% endfor %}
 
-        <div id="AddGrid" class="card shadow dashboard-item dashboard-item-new border-bottom-primary" data-toggle="modal" data-target="#addProject">
-            <span><i class="fa fa-solid fa-plus"></i></span>
-            <h4>Add New Project</h4>
-        </div>
+        <!-- Project Card that acts as a button to add a new project -->
+        {% if current_user.is_anonymous %}
+        {% else %}  
+            <div id="AddGrid" class="card shadow dashboard-item dashboard-item-new border-bottom-primary" data-toggle="modal" data-target="#addProject">
+                <span><i class="fa fa-solid fa-plus"></i></span>
+                <h4>Add New Project</h4>
+            </div>
+        {% endif %}
     </div>
 
-    <!-- New Project Modal-->
+    <!-- New Project Modal, contains a form for user to enter project details and a button to submit -->
     <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -138,9 +140,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <!-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> -->
-                </div>
+                <div class="modal-footer"></div>
             </div>
         </div>
     </div>

@@ -8,6 +8,7 @@
     <div class="flex-page">
         <div class="flex-title">
             <div class="dropdown mb-4">
+                <!-- Dropdown to select an available project and it's related requirements from the database -->
                 <select id="projectChoose" class="btn btn-primary dropdown-toggle" >
                     {% for project in projects|sort(attribute="id") %}
                         <option value="{{project.id}}" {% if project_id == project.id %} selected {% endif %} >{{project.title}}</option>
@@ -16,16 +17,20 @@
             </div>
         </div>
         <div class="flex-body">
-            <!-- DataTales Example -->
             <div class="card shadow page-table border-left-primary">
                 <div class="card-body">
                     <div class="table-responsive">
+                        <!-- Table that dispalys the requirements. Table JS sourced from the library https://datatables.net/ -->
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <!-- Table Header also contains the new requirement button -->
                                     <th>
                                         Primary Key
-                                        <a class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#AddPrimary"><i class="fa fa-solid fa-plus"></i></a>
+                                        {% if current_user.is_anonymous %}
+                                        {% else %}
+                                            <a class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#AddPrimary" aria-label="Button to add a requirement"><i class="fa fa-solid fa-plus"></i></a>
+                                        {% endif %}
                                     </th>
                                     <th>Description</th>
                                     <th>Acceptance Rationale</th>
@@ -41,12 +46,17 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                <!-- Get list of available requirements from the database to display -->
                                 {% for primary in primarys %}
                                     <tr>
+                                        <!-- Table databox that contains Requirement ID also contains buttons to edit/delete the requirement -->
                                         <td>
                                             {{primary.id}}
-                                            <a class="btn btn-secondary btn-circle btn-sm" href=""><i class="fas fa-info-circle"></i></a>
-                                            <a class="btn btn-danger btn-circle btn-sm" href="{{ url_for('delete_primary', primary_id=primary.id) }}"><i class="fas fa-trash"></i></a>
+                                            {% if current_user.is_anonymous %}
+                                            {% else %}
+                                                <a class="btn btn-secondary btn-circle btn-sm" href="" aria-label="Button to edit a requirement"><i class="fas fa-info-circle"></i></a>
+                                                <a class="btn btn-danger btn-circle btn-sm" href="{{ url_for('delete_primary', primary_id=primary.id) }}" aria-label="Button to delete a requirement"><i class="fas fa-trash"></i></a>
+                                            {% endif %}
                                         </td>
                                         <td>{{primary.description}}</td>
                                         <td>{{primary.acceptance_rationale}}</td>
@@ -61,7 +71,7 @@
         </div>
     </div>
 
-    <!-- New Project Modal-->
+    <!-- New Requirement Modal, contains a form for user to enter requirement details and a button to submit --->
     <div class="modal fade" id="AddPrimary" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

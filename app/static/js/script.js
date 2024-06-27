@@ -1,22 +1,14 @@
+/** 
+ * When page fully loaded create the table needed for the page. 
+ */
 $(document).ready( function () {
     console.log("Table Loaded");
     $('#dataTable').DataTable();
 });
 
-var cardTitle = $("<h3/>").addClass("dashboard-item-header");
-var cardBody = $("<p/>").addClass("dashboard-item-body");
-var card = $("<div/>").addClass("dashboard-item").html(cardTitle.add(cardBody));
-
-var test = $("<div/>").addClass("dashboard-item dashboard-item-new")
-
-$(function() {
-    $(".AddTable").click(function() {
-        $(this).parents('table')
-                .find("tr:last")
-                .before('<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
-    });
-});
-
+/**
+ * 
+ */
 $('#projectChoose').change(function() {
     var selectedProjectId = $(this).val();
     console.log('User selected project with id: ' + selectedProjectId);
@@ -43,4 +35,11 @@ $('#projectChoose').change(function() {
     });
 });
 
-
+/**
+ * [bar description]
+ * @param  {[type]} foo [description]
+ * @return {[type]}     [description]
+ */
+function bar (foo) {
+    return foo + foo;
+}

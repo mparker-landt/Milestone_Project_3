@@ -31,7 +31,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center">
+                <a class="sidebar-brand sidebar-brand-margin d-flex align-items-center justify-content-center" aria-label="Link to Homepage. Doubles as Website Logo">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-solid fa-business-time"></i>
                     </div>
@@ -47,9 +47,10 @@
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
-                    <a class="nav-link" href={{ url_for('index') }}>
+                    <a class="nav-link" href={{ url_for('index') }} aria-label="Navigation to Homepage/Project page">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
+                        <span>Dashboard</span>
+                    </a>
                 </li>
 
                 <!-- Divider -->
@@ -62,9 +63,10 @@
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('project_reqs', project_id=0) }}">
+                    <a class="nav-link" href="{{ url_for('project_reqs', project_id=0) }}" aria-label="Navigation to Requirements page">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Project Requirements</span></a>
+                        <span>Project Requirements</span>
+                    </a>
                 </li>
 
                 <!-- Divider -->
@@ -77,9 +79,10 @@
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
-                    <a class="nav-link" href={{ url_for('test_reports') }}>
+                    <a class="nav-link" href={{ url_for('test_reports') }} aria-label="Navigation to Test Reports page">
                         <i class="fas fa-fw fa-wrench"></i>
-                        <span>Test Reports</span></a>
+                        <span>Test Reports</span>
+                    </a>
                 </li>
 
                 <!-- Divider -->
@@ -105,8 +108,9 @@
                         </button>
 
                         <!-- Page Heading -->
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <h1 class="h1 mb-0 text-gray-800">
+                                <!-- Title Content from other template pages -->
                                 {% block title %}{% endblock %}
                             </h1>
                         </div>
@@ -116,20 +120,25 @@
 
                             <div class="topbar-divider d-none d-sm-block"></div>
 
+                            <!-- Conditional Statement to ask if a user is signed in or not -->
                             {% if current_user.is_anonymous %}
-                                <a href={{ url_for('login') }} class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <!-- Direct for is a user is not signed in. Only login button is displayed -->
+
+                                <a href={{ url_for('login') }} class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" aria-label="Button to log in as a user">
                                     <i class="fas fa-sm text-white-50"></i> 
                                     Log In
                                 </a>
                             {% else %}
-                                <a  href="{{ url_for('user', username=current_user.username) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <!-- Direct for is a user is signed in. Logout and Profile buttons are displayed -->
+
+                                <a href="{{ url_for('user', username=current_user.username) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" aria-label="Button to navigate to User Profile page">
                                     <i class="fas fa-sm text-white-50"></i> 
                                     Profile
                                 </a>
 
                                 <div class="topbar-divider d-none d-sm-block"></div>
 
-                                <a href={{ url_for('logout') }} class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <a href={{ url_for('logout') }} class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" aria-label="Button for user to log out">
                                     <i class="fas fa-sm text-white-50"></i> 
                                     Log Out
                                 </a>
@@ -144,6 +153,7 @@
                     <!-- Begin Page Content -->
                     <div class="page-container ">
                         <div class="page-content">
+                            <!-- Page Content from other template pages -->
                             {% block content %}{% endblock %} 
                         </div>
                     </div>
@@ -167,12 +177,12 @@
         <!-- End of Page Wrapper -->
 
         <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
+        <a class="scroll-to-top rounded" href="#page-top" aria-label="Button to scroll back to top of the page">
             <i class="fas fa-angle-up"></i>
         </a>
 
         <!-- Admin Modal-->
-        <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <!-- <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -189,10 +199,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -209,11 +219,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         
+        <!-- JQuery core JavaScipt -->
+        <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
         <!-- Core plugin JavaScript-->

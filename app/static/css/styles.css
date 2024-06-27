@@ -1,16 +1,22 @@
 * {
-    --req_blue: #4d72df;
+    --req_blue: #4d72df; /* Variable created to use the exact blue of the template pages */
 }
 
 select {
     margin: 0 1%;
 }
 
+.sidebar-brand-margin {
+    margin: 8% 0;
+}
+
+/* Make navbar stick to the top of the page on scroll */
 .sticky-top {
     position: sticky;
     top: 0;
 }
 
+/* Make footer stick to the bottom of the page on scroll */
 .sticky-bottom {
     position: sticky;
     bottom: 0;
@@ -29,44 +35,39 @@ select {
     padding: 2rem;
 }
 
+/* Adaptable grid pattern for projects, dynamically fits on any page */
 #dashboard-grid {
     margin-bottom: 1rem;
     padding: 1rem;
-
     display: grid;
     border-radius: 10px;
-
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
 }
 
+/* NOT NEEDED? */
 .card-head-mod {
     display: ruby;
 }
 
-.report-grid {
+/* Adaptable grid pattern for tests, dynamically fits on any page */
+#report-grid {
     margin-bottom: 1rem;
     padding: 1rem;
-
     display: grid;
     border-radius: 10px;
-
     grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
     gap: 1rem;
-
     width: 100%;
 }
 
+/* Project and Test grid item, shared by both grid IDs */
 .dashboard-item {
     border: 1px solid var(--req_blue);
     border-radius: 10px;
-
     height: 250px;
-
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
     text-align: center;
-
     overflow: scroll;
 }
 
@@ -86,26 +87,19 @@ select {
     padding: 1% 0;
     padding-top: 5%;
     padding: 8% 0;
-    
     width: 100%;
-
     position: sticky;
     top: 0;
-
     border-bottom: 1px solid var(--req_blue);
-
     z-index: 1;
     background-color: #f8f9fc;
-
     font-weight: bold;
 }
 
 .dashboard-item-body {
     padding: 2%;
     padding-top: 5%;
-
     word-wrap: break-word;
-
     overflow: scroll;
 }
   
@@ -116,6 +110,7 @@ table, th, td {
     padding: 2px;
 }
 
+/* Table data box highlights when hovered over */
 td:hover {
     background-color: lightcyan;
 }
@@ -132,11 +127,7 @@ td:hover {
 .flex-title {
     display: flex;
     flex-direction: row;
-
-    /* justify-content: flex-start; */
     justify-content: center; 
-
-    /* padding: 1rem; */
 }
 
 .flex-body {
@@ -150,11 +141,13 @@ td:hover {
     margin-top: 2rem;
 }
 
+/* NEEDED? */
 .modal-reqs {
     text-align: center;
     padding-bottom: 2%;
 }
 
+/* Centering of content in a form */
 .reqs-form {
     display: flex;
     flex-direction: column;
@@ -166,3 +159,55 @@ td:hover {
 .reqs-form div {
     padding-bottom: 2%;
 }
+
+
+/* Smaller than a desktop */
+@media (max-width: 1024px) {   
+
+}
+
+/* Smaller than a phablet */
+@media (max-width: 768px) {   
+
+}
+
+  
+/* Smaller than a tablet */
+@media (max-width: 640px) {   
+
+}
+
+/* Smaller than a phone */
+@media (orientation: portrait) and (max-width: 640px) {
+    
+    .page-content {
+        /* height: 100%; */
+        padding: 0;
+    }
+
+    .topbar {
+        height: 6rem;
+    }
+
+    #dashboard-grid {
+        /* margin-bottom: 1rem;ks
+        padding: 1rem;
+        display: grid;
+        border-radius: 10px; */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        /* gap: 1rem; */
+    }
+
+    #report-grid {
+        /* margin-bottom: 1rem;
+        padding: 1rem;
+        display: grid;
+        border-radius: 10px; */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        /* gap: 1rem;
+        width: 100%; */
+    }
+}
+  
+  
+  
