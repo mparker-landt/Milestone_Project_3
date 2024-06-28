@@ -22,5 +22,6 @@ else:
     app.config["SQLALCHEMY_DATABASE_URI"] = uri  # heroku
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 from app import routes, errors
