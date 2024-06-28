@@ -72,20 +72,14 @@
                                     </span>
                                     <span class="text">Delete</span>
                                 </a>
-                                <a class="btn btn-secondary btn-icon-split" href="{{ url_for('edit_project', project_id=project.id) }}" aria-label="Button to edit a project">
+                                <a class="btn btn-secondary btn-icon-split" href="{{ url_for('edit_project', project_id=project.id) }}" aria-label="Button to delete a project">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-info-circle"></i>  
                                     </span>
                                     <span class="text">Edit</span>
                                 </a>
                             {% endif %}
-                            <a class="btn btn-info btn-icon-split" href={{ url_for('test_reports') }} aria-label="Button to navigate to Test Reports page with chosen project targeted">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-arrow-right"></i>  
-                                </span>
-                                <span class="text">Tests</span>
-                            </a>
-                            <a class="btn btn-success btn-icon-split" href="{{ url_for('project_reqs', project_id=project.id) }}" aria-label="Button to navigate to Requirements page with chosen project targeted">
+                            <a class="btn btn-success btn-icon-split" href="{{ url_for('requirements', project_id=project.id) }}" aria-label="Button to navigate to Requirements page with chosen project targeted">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-right"></i>  
                                 </span>
@@ -100,48 +94,10 @@
         <!-- Project Card that acts as a button to add a new project -->
         {% if current_user.is_anonymous %}
         {% else %}  
-            <div id="AddGrid" class="card shadow dashboard-item dashboard-item-new border-bottom-primary" data-toggle="modal" data-target="#addProject">
+            <a id="addGrid" class="card shadow dashboard-item dashboard-item-new border-bottom-primary" href={{ url_for('add_project') }} aria-label="Button to add a project">
                 <span><i class="fa fa-solid fa-plus"></i></span>
                 <h4>Add New Project</h4>
-            </div>
+            </a>
         {% endif %}
-    </div>
-
-    <!-- New Project Modal, contains a form for user to enter project details and a button to submit -->
-    <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add project</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form method="POST" class="reqs-form" action="{{url_for('add_project')}}">
-                                    <div>
-                                        <label for="title">TITLE</label>
-                                        <input name="title" id="title" type="text" required>
-                                    </div>
-
-                                    <div>
-                                        <label for="description">DESCRIPTION</label>
-                                        <input name="description" id="description" type="text" required>
-                                    </div>
-
-                                    <div>
-                                        <button type="submit">ADD</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer"></div>
-            </div>
-        </div>
     </div>
 {% endblock %}

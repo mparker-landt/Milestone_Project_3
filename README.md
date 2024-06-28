@@ -1,6 +1,6 @@
 # Volo Requirements System
 
-Volo Requirements System is a full stack application that meets the requirement of a user creating projects and primary and secondary requirements for the corresponding projects.\
+Volo Requirements System is a full stack application that meets the requirement of a user creating projects and requirements for the corresponding projects.\
 This project was created to meet the criteria of the Code Institute Milestone Project 3.
 
 ![AmIResponsive Screenshot](assets/images/readme/ms3-amiresponsive.png)
@@ -97,8 +97,8 @@ Due to the professional setting for the application no images were used in the p
 ### Functional Features
 The application offers the features:
 - Create and view Projects
-- View a projects primary requirements and related secondary requirements
-- Create and delete Primary and Secondary Requirements for a Project.
+- View a projects requirements 
+- Create and delete Requirements for a Project.
 
 ### Design Features
 The website was designed to be a simple yet functional multipage site that could be used in a professional work setting.\
@@ -116,16 +116,10 @@ Designed to be desktop first and to provide information in a intuitive and clean
 ![Project Card Modal Feature](assets/images/)
 - Requirements Page\
 ![Requirements Page](assets/images/)
-- Test Report Page\
-![Test Report Page](assets/images/)
-- Test Report Modal\
-![Test Report Modal Feature](assets/images/)
 - Sign In Page\
 ![Sign In Page](assets/images/)
 - Register Page\
 ![Register Page](assets/images/)
-- User Profile Page\
-![User Profile Page](assets/images/)
 - Error 404 Page\
 ![Error 404 Page](assets/images/)
 - Error 500 Page\

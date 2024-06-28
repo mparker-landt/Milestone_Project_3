@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
+from wtforms import PasswordField, SubmitField
+from wtforms import StringField, BooleanField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 import sqlalchemy as sa
 from app import db
 from app.models import User
@@ -19,7 +20,9 @@ class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    password2 = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')]
+    )
     submit = SubmitField('Register')
 
     def validate_username(self, username):
@@ -31,12 +34,3 @@ class RegistrationForm(FlaskForm):
         user = db.session.scalar(sa.select(User).where(User.email == email.data))
         if user is not None:
             raise ValidationError('Please use a different email address.')
-
-
-class EditProfileForm(FlaskForm):
-    """Form for user editing page input details."""
-    username = StringField('Username', validators=[DataRequired()])
-    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
-    job_title = TextAreaField('Job Title', validators=[Length(min=0, max=50)])
-    job_description = TextAreaField('Job Description', validators=[Length(min=0, max=256)])
-    submit = SubmitField('Submit')

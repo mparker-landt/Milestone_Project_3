@@ -1,9 +1,9 @@
-from app import db, login
 from typing import Optional
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from app import db, login
 
 
 class User(UserMixin, db.Model):
@@ -18,25 +18,26 @@ class User(UserMixin, db.Model):
 
     def __repr__(self): # __repr__ to represent itself in the form of a string
         return '<User {}>'.format(self.username)
-    
+
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-    
+
+
 @login.user_loader
 def load_user(id):
+    """To be filled."""
     return db.session.get(User, int(id))
 
 
 class Project(db.Model):
     """Schema for the Project model."""
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(25), unique=True, nullable=False) # Unique = Can't be used again / nullable = Can't be left empty
+    title = db.Column(db.String(25), unique=True, nullable=False)
     description = db.Column(db.Text, nullable=False)
     primary_reqs = db.relationship("Primary", backref="project", cascade="all, delete", lazy=True)
-    tests = db.relationship("Test", backref="project", cascade="all, delete", lazy=True)
 
     def __repr__(self):
         return self.title
@@ -47,38 +48,9 @@ class Primary(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.Text, nullable=False)
     acceptance_rationale = db.Column(db.Text, default=False, nullable=False)
-    project_id = db.Column(db.Integer, db.ForeignKey("project.id", ondelete="CASCADE"), nullable=False)
-    secondary_reqs = db.relationship("Secondary", backref="primary", cascade="all, delete", lazy=True)
+    project_id = db.Column(
+        db.Integer, db.ForeignKey("project.id", ondelete="CASCADE"), nullable=False
+    )
 
     def __repr__(self):
         return self.id
-
-
-class Secondary(db.Model):
-    """Schema for the Secondary Reqs model."""
-    id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.Text, nullable=False)
-    need = db.Column(db.Text, default=False, nullable=False)
-    acceptance_criteria = db.Column(db.Text, nullable=False)
-    changed = db.Column(db.Text, nullable=False)
-    tested = db.Column(db.Boolean, nullable=False)
-    primary_req_id = db.Column(db.Integer, db.ForeignKey("primary.id", ondelete="CASCADE"), nullable=False)
-    # test = db.relationship("Test", backref="primary_req", cascade="all, delete", lazy=True)
-
-    def __repr__(self):
-        return self.id
-
-
-class Test(db.Model):
-    """Schema for the Test model."""
-    id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.Text, nullable=False)
-    test_date = db.Column(db.Date, nullable=False)
-    reporter = db.Column(db.Text, nullable=False)
-    report = db.Column(db.Text, nullable=False)
-    project_id = db.Column(db.Integer, db.ForeignKey("project.id", ondelete="CASCADE"), nullable=False)
-
-    def __repr__(self):
-        return "#{0} - Description: {1} | Date: {2}".format(
-            self.id, self.description, self.test_date
-        )

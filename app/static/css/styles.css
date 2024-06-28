@@ -61,6 +61,11 @@ select {
     width: 100%;
 }
 
+#addGrid {
+    text-decoration: none;
+    color: #858796;
+}
+
 /* Project and Test grid item, shared by both grid IDs */
 .dashboard-item {
     border: 1px solid var(--req_blue);
