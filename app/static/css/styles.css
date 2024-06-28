@@ -45,7 +45,6 @@ select {
     gap: 1rem;
 }
 
-/* NOT NEEDED? */
 .card-head-mod {
     display: ruby;
 }
@@ -146,7 +145,6 @@ td:hover {
     margin-top: 2rem;
 }
 
-/* NEEDED? */
 .modal-reqs {
     text-align: center;
     padding-bottom: 2%;
@@ -165,28 +163,10 @@ td:hover {
     padding-bottom: 2%;
 }
 
-
-/* Smaller than a desktop */
-@media (max-width: 1024px) {   
-
-}
-
-/* Smaller than a phablet */
-@media (max-width: 768px) {   
-
-}
-
-  
-/* Smaller than a tablet */
-@media (max-width: 640px) {   
-
-}
-
 /* Smaller than a phone */
 @media (orientation: portrait) and (max-width: 640px) {
     
     .page-content {
-        /* height: 100%; */
         padding: 0;
     }
 
@@ -195,22 +175,11 @@ td:hover {
     }
 
     #dashboard-grid {
-        /* margin-bottom: 1rem;ks
-        padding: 1rem;
-        display: grid;
-        border-radius: 10px; */
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        /* gap: 1rem; */
     }
 
     #report-grid {
-        /* margin-bottom: 1rem;
-        padding: 1rem;
-        display: grid;
-        border-radius: 10px; */
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        /* gap: 1rem;
-        width: 100%; */
     }
 }
   

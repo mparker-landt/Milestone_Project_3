@@ -9,7 +9,7 @@ View Repository in GitHub Pages:\
 https://github.com/mparker-landt/Milestone_Project_3
 
 View Website Link:\
-
+https://volo-requirements-system-6e36ea052d2c.herokuapp.com/
 
 Author: Marcus Parker\
 Github: [mparker-landt](https://github.com/mparker-landt)
@@ -104,26 +104,30 @@ The application offers the features:
 The website was designed to be a simple yet functional multipage site that could be used in a professional work setting.\
 The base template for the user interface was aquired from StartBootstrap. The demo used was [SB Admin 2](https://startbootstrap.com/theme/sb-admin-2) which was adapted upon to meet the demands for the project.\
 Designed to be desktop first and to provide information in a intuitive and clean manner.
+- Page\
+![Page Feature](assets/images/feature-page.png)
 - Header\
-![Header Feature](assets/images/)
+![Header Feature](assets/images/feature-header.png)
 - Footer\
-![Footer Feature](assets/images/)
+![Footer Feature](assets/images/feature-footer.png)
 - Menu\
-![Menu Feature](assets/images/)
+![Menu Feature](assets/images/feature-settings.png)
 - Projects Page\
-![Projects Page](assets/images/)
+![Projects Page](assets/images/feature-projects.png)
+![Projects New](assets/images/feature-project-addx.png)
 - Project Card Modal\
-![Project Card Modal Feature](assets/images/)
+![Project Card Modal Feature](assets/images/feature-projectcard.png)
+![Project Card Modal Feature](assets/images/feature-project-cardx.png)
 - Requirements Page\
-![Requirements Page](assets/images/)
+![Requirements Page](assets/images/feature-requirements.png)
+![Requirements Page](assets/images/feature-reqsx.png)
 - Sign In Page\
-![Sign In Page](assets/images/)
+![Sign In Page](assets/images/feature-login.png)
 - Register Page\
-![Register Page](assets/images/)
-- Error 404 Page\
-![Error 404 Page](assets/images/)
-- Error 500 Page\
-![Error 500 Page](assets/images/)
+![Register Page](assets/images/feature-register.png)
+- Error Pages\
+![Error 404 Page](assets/images/feature-errors.png)
+
 
 ### Future Features
 The website was designed to have many features added in the future:
@@ -148,6 +152,7 @@ The website was designed to have many features added in the future:
 - [SQLAlchemy](https://www.psycopg.org/)
 ### External Resources
 - [Start Bootstrap](https://startbootstrap.com/) - Used as a template to adapt the design of the UI from.
+- [Datatables](https://datatables.net/) - JavaScript library used for a better functional and visually appealing table.
 - [Font Awesome](https://fontawesome.com/) - Used to acquire icons for the project.
 - [Draw.io](https://www.drawio.com/) - Used to create the wireframes for the project.
 - [pgAdmin4](https://www.pgadmin.org/) - Used to create the ERD for the project. This tool was also used to aid in visually inspecting the SQL database for the project and the contained tables and columns
@@ -172,10 +177,7 @@ https://jigsaw.w3.org/css-validator
 https://jshint.com
 ### Python Testing
 PEP8 Online 
-### User Story Testing
 
-## Known Bugs
-TBC
 
 ## Development & Deployment
 ### Development
@@ -184,6 +186,10 @@ This project was developed in an environment with the tools:
 - Sourcetree - User application to connect to Github.
 - Github & Git - Version and Source Control to save the code and see the history.
 - Firefox Web Browser - User to view the frontend application and debug the frontend code.
+
+To replicate the development environment:
+- Open VS Code and start a new virtual environment by using the command 
+- 
 
 The project is deployed on Github:
 
@@ -210,6 +216,8 @@ Cloning the repository
 
 ### Deployment
 The website was deployed live using Heroku to host the backend and frontend into a working package.
+
+To replicate
 
 ## Credits and Acknowledgements
 With special thanks to:

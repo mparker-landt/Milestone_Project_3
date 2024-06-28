@@ -28,7 +28,7 @@ class User(UserMixin, db.Model):
 
 @login.user_loader
 def load_user(id):
-    """To be filled."""
+    """Loads user detail to remember login."""
     return db.session.get(User, int(id))
 
 

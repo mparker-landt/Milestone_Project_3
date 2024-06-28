@@ -1,5 +1,5 @@
 from urllib.parse import urlsplit
-from flask import render_template, request, redirect, url_for, flash, jsonify
+from flask import render_template, request, redirect, url_for, flash
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import app, db
@@ -17,8 +17,9 @@ def index():
 
 
 @app.route("/project_add", methods=["GET", "POST"])
+@login_required
 def add_project():
-    """Path for editing a User Profile page."""
+    """Path for adding a Project page. Redirects to homepage."""
     if request.method == "POST":
         project = Project(
             title=request.form.get("project_title"),
@@ -27,22 +28,24 @@ def add_project():
         db.session.add(project)
         db.session.commit()
         return redirect(url_for("index"))
-    return render_template("project_add.html")
+    return render_template("project-add.html")
 
 
 @app.route("/project_edit/<int:project_id>", methods=["GET", "POST"])
+@login_required
 def edit_project(project_id):
-    """Path for editing a User Profile page."""
+    """Path for editing a User Profile page. Redirects to homepage."""
     project = Project.query.get_or_404(project_id)
     if request.method == "POST":
         project.title = request.form.get("project_title")
         project.description = request.form.get("project_description")
         db.session.commit()
         return redirect(url_for("index"))
-    return render_template("project_edit.html", project=project)
+    return render_template("project-edit.html", project=project)
 
 
 @app.route("/delete_project/<int:project_id>")
+@login_required
 def delete_project(project_id):
     """Path for deleting a project from the database. Redirects to homepage."""
     project = Project.query.get_or_404(project_id)
@@ -51,45 +54,51 @@ def delete_project(project_id):
     return redirect(url_for("index"))
 
 
-@app.route("/requirements/<int:project_id>")
-def requirements(project_id):
+@app.route("/requirements")
+def requirements():
     """Path for Requirements Page. Displays project requirements in a table."""
     projects = list(Project.query.order_by(Project.id).all())
-    # primarys = list(Primary.query.order_by(Primary.id).all())
-    primarys = Primary.query.filter_by(project_id=Primary.project_id).all()
+    primarys = list(Primary.query.order_by(Primary.id).all())
     return render_template(
-        "requirements.html", projects=projects, primarys=primarys, project_id=project_id
-    )
+        "requirements.html", projects=projects, primarys=primarys)
 
 
-@app.route("/primary_reqs", methods=["POST"])
-def primary_reqs():
-    """To be filled."""
-    project_id = request.form.get('project_id')
-    primarys = Primary.query.filter_by(project_id=project_id).all()
-    primarys_list = [p.serialize() for p in primarys]  # assuming you have a serialize method
-    return jsonify({'primarys': primarys_list})
-
-
-@app.route("/add_primary", methods=["GET", "POST"])
-def add_primary():
-    """Path for adding a requirement to the database. Redirects to Project Requirements page."""
-    projects = list(Project.query.order_by(Project.title).all())
+@app.route("/primary_add", methods=["GET", "POST"])
+@login_required
+def add_requirement():
+    """Path for adding a Requirement page."""
+    projects = list(Project.query.order_by(Project.id).all())
     if request.method == "POST":
         primary = Primary(
-            description=request.form.get("description"),
-            acceptance_rationale=request.form.get("acceptance_rationale"),
-            project_id=request.form.get("project_id")
+            description=request.form.get("req_description"),
+            acceptance_rationale=request.form.get("req_acceptance_rationale"),
+            project_id=request.form.get("req_project")
         )
         db.session.add(primary)
         db.session.commit()
         return redirect(url_for("requirements"))
-    return render_template(url_for("requirements"), projects=projects)
+    return render_template("requirements-add.html", projects=projects)
+
+
+@app.route("/primary_edit/<int:primary_id>", methods=["GET", "POST"])
+@login_required
+def edit_requirement(primary_id):
+    """Path for editing a Requirement page."""
+    projects = list(Project.query.order_by(Project.id).all())
+    primary = Primary.query.get_or_404(primary_id)
+    if request.method == "POST":
+        primary.description = request.form.get("req_description")
+        primary.acceptance_rationale = request.form.get("req_acceptance_rationale")
+        primary.project_id = request.form.get("req_project")
+        db.session.commit()
+        return redirect(url_for("requirements"))
+    return render_template("requirements-edit.html", primary=primary, projects=projects)
 
 
 @app.route("/delete_primary/<int:primary_id>")
+@login_required
 def delete_primary(primary_id):
-    """Path for deleting a requirement from the database. Redirects to Project Requirements page."""
+    """Path for deleting a requirement from the database."""
     primary = Primary.query.get_or_404(primary_id)
     db.session.delete(primary)
     db.session.commit()
@@ -113,7 +122,7 @@ def login():
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('user_login.html', title='Sign In', form=form)
+    return render_template('user-login.html', title='Sign In', form=form)
 
 
 @app.route('/logout')
@@ -136,4 +145,4 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('user_register.html', title='Register', form=form)
+    return render_template('user-register.html', title='Register', form=form)

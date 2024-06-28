@@ -57,7 +57,7 @@
 
                 <!-- Divider -->
                 <hr class="sidebar-divider">
-ks
+
                 <!-- Heading -->
                 <div class="sidebar-heading">
                     Pages
@@ -109,14 +109,12 @@ ks
                             <!-- Conditional Statement to ask if a user is signed in or not -->
                             {% if current_user.is_anonymous %}
                                 <!-- Direct for is a user is not signed in. Only login button is displayed -->
-
                                 <a href={{ url_for('login') }} class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" aria-label="Button to log in as a user">
                                     <i class="fas fa-sm text-white-50"></i> 
                                     Log In
                                 </a>
                             {% else %}
                                 <!-- Direct for is a user is signed in. Logout is displayed -->
-
                                 <a href={{ url_for('logout') }} class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" aria-label="Button for user to log out">
                                     <i class="fas fa-sm text-white-50"></i> 
                                     Log Out

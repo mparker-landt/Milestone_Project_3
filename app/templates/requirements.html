@@ -7,14 +7,6 @@
 {% block content %}
     <div class="flex-page">
         <div class="flex-title">
-            <div class="dropdown mb-4">
-                <!-- Dropdown to select an available project and it's related requirements from the database -->
-                <select id="projectChoose" class="btn btn-primary dropdown-toggle" >
-                    {% for project in projects|sort(attribute="id") %}
-                        <option value="{{project.id}}" {% if project_id == project.id %} selected {% endif %} >{{project.title}}</option>
-                    {% endfor %}
-                </select>
-            </div>
         </div>
         <div class="flex-body">
             <div class="card shadow page-table border-left-primary">
@@ -29,7 +21,7 @@
                                         Primary Key
                                         {% if current_user.is_anonymous %}
                                         {% else %}
-                                            <a class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#AddPrimary" aria-label="Button to add a requirement"><i class="fa fa-solid fa-plus"></i></a>
+                                            <a class="btn btn-success btn-circle btn-sm" href={{ url_for('add_requirement') }} aria-label="Button to add a requirement"><i class="fa fa-solid fa-plus"></i></a>
                                         {% endif %}
                                     </th>
                                     <th>Description</th>
@@ -54,67 +46,22 @@
                                             {{primary.id}}
                                             {% if current_user.is_anonymous %}
                                             {% else %}
-                                                <a class="btn btn-secondary btn-circle btn-sm" href="" aria-label="Button to edit a requirement"><i class="fas fa-info-circle"></i></a>
+                                                <a class="btn btn-secondary btn-circle btn-sm" href="{{ url_for('edit_requirement', primary_id=primary.id) }}" aria-label="Button to edit a requirement"><i class="fas fa-info-circle"></i></a>
                                                 <a class="btn btn-danger btn-circle btn-sm" href="{{ url_for('delete_primary', primary_id=primary.id) }}" aria-label="Button to delete a requirement"><i class="fas fa-trash"></i></a>
                                             {% endif %}
                                         </td>
                                         <td>{{primary.description}}</td>
                                         <td>{{primary.acceptance_rationale}}</td>
-                                        <td>{{primary.project_id}}</td>
+                                        {% for project in projects %}
+                                            {% if project.id == primary.project_id %}
+                                                <td>{{project.title}}</td>
+                                            {% endif %}
+                                        {% endfor %}
                                     </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- New Requirement Modal, contains a form for user to enter requirement details and a button to submit --->
-    <div class="modal fade" id="AddPrimary" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Primary Requirement</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">x</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form method="POST" class="reqs-form" action="{{url_for('add_primary')}}">
-                                    <div>
-                                        <label for="description">DESCRIPTION</label>
-                                        <input name="description" id="description" type="text">
-                                    </div>
-
-                                    <div>
-                                        <label for="acceptance_rationale">ACCEPTANCE REQUIREMENT</label>
-                                        <input name="acceptance_rationale" id="test_date" type="text">
-                                    </div>
-
-                                    <div>
-                                        <select id="project_id" name="project_id" class="validate" required>
-                                            <option value="" disabled selected>Choose Project</option>
-                                            {% for project in projects %}
-                                                <option value="{{ project.id }}">{{ project.title }}</option>
-                                            {% endfor %}
-                                        </select>
-                                        <label for="project_id">Project</label>
-                                    </div>
-
-                                    <div>
-                                        <button type="submit">ADD</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
                 </div>
             </div>
         </div>

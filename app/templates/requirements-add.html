@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Add Requirement
+{% endblock %}
+
+{% block content %}
+    <div class="row card shadow mb-4">
+        <div class="card-header py-3"></div>
+        <div class="card-body">
+            <form class="col s12" method="POST" action="{{ url_for('add_requirement') }}">
+                <!-- requirement description -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="req_description">Requirement Description</label>
+                        <!-- <input id="req_description" name="req_description" minlength="3" maxlength="25" type="text" class="validate" required> -->
+                        <textarea id="req_description" name="req_description" maxlength="255" type="text" rows="10" cols="75">
+                        </textarea>
+                    </div>
+                </div>
+                <!-- requirement acceptance_rationale -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="req_acceptance_rationale">Requirement Acceptance Rationale</label>
+                        <!-- <input id="req_acceptance_rationale" name="req_acceptance_rationale" minlength="3" maxlength="25" type="text" class="validate" required> -->
+                        <textarea id="req_acceptance_rationale" name="req_acceptance_rationale" maxlength="255" type="text" rows="10" cols="75">
+                        </textarea>
+                    </div>
+                </div>
+                <!-- requirement project -->
+                <div>
+                    <label for="req_project">Project</label>
+                    <select id="req_project" name="req_project" class="validate" required>
+                        <option value="" disabled selected>Choose Project</option>
+                        {% for project in projects %}
+                            <option value="{{ project.id }}">{{ project.title }}</option>
+                        {% endfor %}
+                    </select>           
+                </div>
+                <!-- submit button -->
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button type="submit" class="d-none d-sm-inline-block btn btn-primary shadow">
+                            Add Requirement <i class="fas fa-plus-square right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
