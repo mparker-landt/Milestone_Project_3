@@ -15,10 +15,11 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 if os.environ.get("DEVELOPMENT") == "True":
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")  # local
 else:
-    uri = os.environ.get("DATABASE_URL")
-    if uri and uri.startswith("postgres://"):
-        uri = uri.replace("postgres://", "postgresql://", 1)
-    app.config["SQLALCHEMY_DATABASE_URI"] = uri  # heroku
+    # uri = os.environ.get("DATABASE_URL")
+    # if uri and uri.startswith("postgres://"):
+    #     uri = uri.replace("postgres://", "postgresql://", 1)
+    # app.config["SQLALCHEMY_DATABASE_URI"] = uri  # heroku
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
