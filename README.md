@@ -3,7 +3,7 @@
 Volo Requirements System is a full stack application that meets the requirement of a user creating projects and requirements for the corresponding projects.\
 This project was created to meet the criteria of the Code Institute Milestone Project 3.
 
-![AmIResponsive Screenshot](assets/images/readme/ms3-amiresponsive.png)
+![AmIResponsive Screenshot](assets/images/amiresponsive.png)
 
 View Repository in GitHub Pages:\
 https://github.com/mparker-landt/Milestone_Project_3
@@ -87,8 +87,8 @@ For the colour scheme a blue and white scheme were used. This was part of the St
 - <span style="color:#F8F9FC">#F8F9FC</span> - Used for main body of the pages, as it is off white the white of content on the page were made more visually appealing and attracted attention immedietaly.
 
 #### Typography
-The font used for the webpage was Nunito, a Sans Serif typeface.
-[Nunito](https://fonts.google.com/specimen/Nunito)
+The font used for the webpage was [Nunito](https://fonts.google.com/specimen/Nunito), a Sans Serif typeface.
+
 
 #### Images
 Due to the professional setting for the application no images were used in the project. Icons for the website were aquired from Font Awesome.
@@ -96,9 +96,10 @@ Due to the professional setting for the application no images were used in the p
 ## Features
 ### Functional Features
 The application offers the features:
-- Create and view Projects
+- Register and Log in as a User
+- Create, edit and view Projects
 - View a projects requirements 
-- Create and delete Requirements for a Project.
+- Create, edit and delete Requirements that can be linked to a Project.
 
 ### Design Features
 The website was designed to be a simple yet functional multipage site that could be used in a professional work setting.\
@@ -131,12 +132,12 @@ Designed to be desktop first and to provide information in a intuitive and clean
 
 ### Future Features
 The website was designed to have many features added in the future:
-- Requirements Freeze Archive
-- Testing Pages
-- Admin Levels
-- Profile Page Information
+- Requirements Freeze Archive - To meet the demand of changing requirements and mitigating scope creep a freeze function could be added that could capture the Project and its requirements on a certain date. These could then not be changed but would also be available to view and compare. 
+- Testing Pages - Project and Requirements could be linked to Test Reports to prove that the Requirements had been met. Data for the reports could include dates, authors and links to documents.
+- Admin Levels - As well as normal users different admin levels could be created where super admins could add others and allow partial functionality for others.
+- Profile Page Information - Users and admins could get a profile page that displays the ownership of Projects and Requirements changed by said user.
 - Much more Project, Requirement and Test Report Information 
-- At risk colour identification
+- At risk colour identification - If date deadline inserted notifications could be enable on the UI to flag risks and attract attentions by users.
 
 
 ## Resources
@@ -162,22 +163,28 @@ The website was designed to have many features added in the future:
 Continuous testing of the application was performed throughout its development period. The testing was performed primarily on Mobile Firefox although Google Chrome was also used.\
 For the HTML and CSS testing was done with Google Chrome and Firefox Development Tools.\
 For functionality testing of the JavaScript and Python/Flask backend a test group was used to provide feedback and find bugs.
+Full CRUD was tested by adding, editing and deleting Project and Requirements. User access was also tested by logging out as a user and trying to do the same.
+Different user profiles were created to test the register and log in and log out functionality.
+
 ### Performance Testing
 The website performance was tested using Google Chrome Developer Tools Lighthouse feature.
-For the webpage the Performance, Best Practices and SEO were 
-The Accessibility score was
+For the webpage the Performance, Best Practices and SEO were 97, 96 and 90 respectively.
+The Accessibility score was 76 which although not bad could be improved throughout the website.
+![Lighthouse Performance Screenshot](assets/images/lighthouse.png)
 
-![Lighthouse Performance Screenshot](assets/images/readme/lighthouse.png)
 
-### HTML Validator Testing
-https://validator.w3.org
 ### CSS Validator Testing
 https://jigsaw.w3.org/css-validator
+There were no warning or errors in the CSS code file.
+![CSS Lint Screenshot](assets/images/lint-css.png)
 ### JS Testing
 https://jshint.com
+Due to the JavaScript file being extremely simple there were no errors in jshint. The warnings visable were due to jquery being used and could be ignored.
+![JS Lint Screenshot](assets/images/lint-js.png)
 ### Python Testing
-PEP8 Online 
-
+Python PEP8 standards were tested by installing the extension Pylint. This allowed for the easy visualisation of errors and warnings when working on the code.
+Although not all warnings were got rid of the ones left were suggestions or Pylint not working fully as expected. 
+![Python Lint Screenshot](assets/images/lint-python.png)
 
 ## Development & Deployment
 ### Development
@@ -188,8 +195,16 @@ This project was developed in an environment with the tools:
 - Firefox Web Browser - User to view the frontend application and debug the frontend code.
 
 To replicate the development environment:
-- Open VS Code and start a new virtual environment by using the command 
-- 
+- Open VS Code and start a new project.
+- Create a virtual environment by running the command "python3 -m venv venv".
+- Activate the vitual environment with the command "source venv/bin/activate".
+- Install Flask "pip install flask".
+- Install Flask modules that will be wanted with "pip install FLASK-NAME". This can also be done throughout the project when a module is needed.
+- Make a folder called app and inside folders called templates and static.
+ This is where the main program and content will be found in the project.
+ - Create a python file with an appropiate name such as run.py.
+ Run the command set FLASK_APP=NAME.py to create an environmental variable.
+ - Test out the functionality and instructions by running "flask run" and navigating to the provided url.
 
 The project is deployed on Github:
 
@@ -217,7 +232,16 @@ Cloning the repository
 ### Deployment
 The website was deployed live using Heroku to host the backend and frontend into a working package.
 
-To replicate
+To replicate:
+- Sign up to Heroku and set up a Two Step Verification method.
+- Create an app in Heroku.
+- Set up the config vars in Heroku settings, this includes the IP, Port and link and password to a database.
+- In Deploy in Heroku link the app to a profile and repository in Github.
+- In Heroku in settings in Buildpack choose the Python language.  
+- In the project files run "pip freeze > requirements.txt" to create a file for Heroku to know what to install. 
+- In the project files create a file called Procfile and the command "web: python NAME.py". This will link to a dyno in Heroku that will run the app.
+- Push the project in git, this will be pushed to Heroku simultaenously and will build in Heroku.
+- Click open app to go to the live deployed website.
 
 ## Credits and Acknowledgements
 With special thanks to:
